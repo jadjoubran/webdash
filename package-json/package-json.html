@@ -1,0 +1,47 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="package-json">
+  <template>
+    <style>
+    </style>
+
+    <h1>Packages</h1>
+
+    <h2>Dependencies</h2>
+    <template is="dom-repeat" items="{{_getKeys(package.dependencies)}}">
+      <div>{{item}}</div>
+    </template>
+
+    <h2>Dev dependencies</h2>
+    <template is="dom-repeat" items="{{_getKeys(package.devDependencies)}}">
+      <div>{{item}}</div>
+    </template>
+    
+  </template>
+
+  <script>
+    class PackageJson extends Polymer.Element {
+      static get is() { return 'package-json'; }
+
+      ready() {
+        super.ready();
+
+        fetch('http://localhost:3000/api/package-json/package-json')
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.package) {
+              this.package = data.package;
+              console.log(this.package);
+            }
+          })
+          .catch(console.error);
+      }
+
+      _getKeys(object) {
+        return Object.keys(object);
+      }
+    }
+
+    window.customElements.define(PackageJson.is, PackageJson);
+  </script>
+</dom-module>
