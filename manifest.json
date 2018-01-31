@@ -1,0 +1,6 @@
+{
+  "name": "webdash",
+  "short_name": "webdash",
+  "start_url": "/",
+  "display": "standalone"
+}
