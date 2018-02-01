@@ -4,10 +4,9 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-const plugins = [
-    'webdash-package-json',
-];
+const bowerJson = require('./bower.json');
 
+const plugins = getPlugins(bowerJson);
 
 for (const plugin of plugins) {
     const pluginSrc = require(`./bower_components/${plugin}/api.js`);
@@ -22,24 +21,39 @@ for (const plugin of plugins) {
     }
 }
 
-//return list of webdash plugins
-app.get('/api/webdash/plugins', (req, res) => {
+app.get('/api/webdash/info', (req, res) => {
+    const appName = __dirname.substr(__dirname.lastIndexOf('/') + 1);
 
-    const bowerJson = require('./bower.json');
-    if (!bowerJson){
+    res.send({ appName });
+});
+
+
+app.get('/api/webdash/plugins', (req, res) => {
+    const plugins = getPlugins(bowerJson);
+
+    res.send({ plugins });
+});
+
+
+app.use(express.static(__dirname + '/build/es6-bundled'));
+
+app.get('*', function (req, res) {
+    res.sendFile("index.html", { root: '.' });
+});
+
+app.listen(3000, () => {
+    console.log('Webdash server running');
+});
+
+
+function getPlugins(bowerJson) {
+    if (!bowerJson) {
         return [];
     }
     const deps = Object.keys(bowerJson.devDependencies);
-    if (!deps){
+    if (!deps) {
         return [];
     }
 
-    const plugins = deps.filter(dep => dep.startsWith('webdash-'));
-
-    res.send({plugins});
-});
-
-
-app.listen(3000, () => {
-    console.log('Example app listening on port 3000!');
-});
+    return deps.filter(dep => dep.startsWith('webdash-'));
+}

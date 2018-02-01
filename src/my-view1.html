@@ -24,7 +24,7 @@
       ready() {
         super.ready();
 
-        fetch('http://localhost:3000/api/webdash/plugins')
+        fetch('/api/webdash/plugins')
           .then(response => response.json())
           .then(data => {
             const plugins = data.plugins;
