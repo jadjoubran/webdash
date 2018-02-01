@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="../package-json/package-json.html">
+<link rel="import" href="../bower_components/webdash-package-json/webdash-package-json.html">
 
 <dom-module id="my-view1">
   <template>
@@ -11,15 +11,34 @@
       }
     </style>
 
-    <div class="card">
-      <package-json></package-json>
-    </div>
+      <div id="plugins">
+
+      </div>
 
   </template>
 
   <script>
     class MyView1 extends Polymer.Element {
       static get is() { return 'my-view1'; }
+
+      ready() {
+        super.ready();
+
+        fetch('http://localhost:3000/api/webdash/plugins')
+          .then(response => response.json())
+          .then(data => {
+            const plugins = data.plugins;
+            if (!plugins || !plugins.length) {
+              return false;
+            }
+
+            for (const plugin of plugins) {
+              const element = document.createElement(plugin);
+              element.classList.add('card');
+              this.$.plugins.appendChild(element);
+            }
+          });
+      }
     }
 
     window.customElements.define(MyView1.is, MyView1);

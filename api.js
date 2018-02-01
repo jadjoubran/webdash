@@ -5,12 +5,12 @@ const app = express();
 app.use(cors());
 
 const plugins = [
-    'package-json',
+    'webdash-package-json',
 ];
 
 
 for (const plugin of plugins) {
-    const pluginSrc = require(`./${plugin}/api-${plugin}.js`);
+    const pluginSrc = require(`./bower_components/${plugin}/api.js`);
     if (!pluginSrc.routes) {
         continue;
     }
@@ -21,6 +21,24 @@ for (const plugin of plugins) {
         }
     }
 }
+
+//return list of webdash plugins
+app.get('/api/webdash/plugins', (req, res) => {
+
+    const bowerJson = require('./bower.json');
+    if (!bowerJson){
+        return [];
+    }
+    const deps = Object.keys(bowerJson.devDependencies);
+    if (!deps){
+        return [];
+    }
+
+    const plugins = deps.filter(dep => dep.startsWith('webdash-'));
+
+    res.send({plugins});
+});
+
 
 app.listen(3000, () => {
     console.log('Example app listening on port 3000!');
