@@ -2,18 +2,21 @@
   "name": "webdash",
   "version": "0.0.1",
   "license": "MIT",
-  "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-plugin-html": "^2.0.0"
-  },
   "scripts": {
+    "start": "concurrently \"polymer serve\" \"node api.js\"",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
     "test:integration": "polymer build # test that psk builds without error with the CLI"
   },
   "dependencies": {
+    "chalk": "^2.2.0",
     "cors": "^2.8.4",
     "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-html": "^2.0.0"
   }
 }

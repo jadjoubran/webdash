@@ -1,6 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="../bower_components/webdash-package-json/webdash-package-json.html">
 
 <dom-module id="my-view1">
   <template>
@@ -9,11 +8,15 @@
         display: block;
         padding: 10px;
       }
+
+      .plugin {
+        width: 400px;
+      }
     </style>
 
-      <div id="plugins">
+    <div id="plugins">
 
-      </div>
+    </div>
 
   </template>
 
@@ -24,8 +27,7 @@
       ready() {
         super.ready();
 
-        fetch('/api/webdash/plugins')
-          .then(response => response.json())
+        backend.get('webdash/plugins')
           .then(data => {
             const plugins = data.plugins;
             if (!plugins || !plugins.length) {
@@ -33,9 +35,12 @@
             }
 
             for (const plugin of plugins) {
-              const element = document.createElement(plugin);
-              element.classList.add('card');
-              this.$.plugins.appendChild(element);
+              Polymer.importHref([`../bower_components/${plugin}/${plugin}.html`], () => {
+                const element = document.createElement(plugin);
+                element.classList.add('card');
+                element.classList.add('plugin');
+                this.$.plugins.appendChild(element);
+              });
             }
           });
       }

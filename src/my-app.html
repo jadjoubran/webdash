@@ -161,11 +161,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _getInfo() {
-        fetch('/api/webdash/info')
-          .then(response => response.json())
+          backend.get('webdash/info')
           .then(data => {
             this.appName = data.appName;
-
           });
       }
     }

@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 
 const bowerJson = require('./bower.json');
 
@@ -19,10 +21,16 @@ for (const plugin of plugins) {
             app.get(`/api/${plugin}/${route}`, handler);
         }
     }
+    if (routes.post) {
+        for (const [route, handler] of Object.entries(routes.post)) {
+            app.post(`/api/${plugin}/${route}`, handler);
+        }
+    }
 }
 
 app.get('/api/webdash/info', (req, res) => {
-    const appName = __dirname.substr(__dirname.lastIndexOf('/') + 1);
+    const packageJson = require('./package.json');
+    const appName = packageJson.name;
 
     res.send({ appName });
 });
