@@ -1,5 +1,5 @@
 {
     "src": "./src/",
     "dist": "./dist/",
-    "js-budget": 200
+    "jsBudget": 200
 }

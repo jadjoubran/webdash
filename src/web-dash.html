@@ -2,7 +2,7 @@
 <link rel="import" href="plugin-wrapper.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-view1">
+<dom-module id="web-dash">
   <template>
     <style include="shared-styles">
       :host {
@@ -46,8 +46,8 @@
   </template>
 
   <script>
-    class MyView1 extends Polymer.Element {
-      static get is() { return 'my-view1'; }
+    class WebDash extends Polymer.Element {
+      static get is() { return 'web-dash'; }
 
       ready() {
         super.ready();
@@ -77,6 +77,6 @@
       }
     }
 
-    window.customElements.define(MyView1.is, MyView1);
+    window.customElements.define(WebDash.is, WebDash);
   </script>
 </dom-module>

@@ -17,24 +17,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="app-header.html">
 
-<link rel="lazy-import" href="my-view1.html">
-<link rel="lazy-import" href="my-view404.html">
+<link rel="lazy-import" href="web-dash.html">
+<link rel="lazy-import" href="view-404.html">
 
 <dom-module id="my-app">
   <template>
     <style>
       :host {
-        --app-primary-color: #4285f4;
-        --app-secondary-color: #1F2D38;
-
         display: block;
         color: white;
-      }
-
-      header {
-        text-align: center;
-        padding-top: 70px;
       }
 
       h1 {
@@ -45,23 +38,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       h3 {
         margin-top: 0;
         color: rgba(255, 255, 255, 0.5);
-      }
-
-      .drawer-list {
-        margin: 0 20px;
-      }
-
-      .drawer-list a {
-        display: block;
-        padding: 0 16px;
-        text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
-      }
-
-      .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
       }
 
       #webdash-footer {
@@ -86,18 +62,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
 
-    <header>
-      <h1>Codetogo</h1>
-      <h3>Dashboard</h3>
-    </header>
+    <app-header></app-header>
 
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
     </app-route>
 
 
     <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
-      <my-view1 name="view1"></my-view1>
-      <my-view404 name="view404"></my-view404>
+      <web-dash name="web-dash"></web-dash>
+      <view-404 name="view-404"></view-404>
     </iron-pages>
 
     <div id="webdash-footer">
@@ -121,8 +94,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           },
           routeData: Object,
           subroute: String,
-          // This shouldn't be neccessary, but the Analyzer isn't picking up
-          // Polymer.Element#rootPath
           rootPath: String,
         };
       }
@@ -139,17 +110,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.backend = new Backend('webdash');
 
         this._getInfo();
+        this._getConfig();
       }
 
       _routePageChanged(page) {
-        // If no page was found in the route data, page will be an empty string.
-        // Default to 'view1' in that case.
-        this.page = page || 'view1';
+        this.page = page || 'web-dash';
       }
 
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+        var resolvedPageUrl = this.resolveUrl(page + '.html');
         Polymer.importHref(
           resolvedPageUrl,
           null,
@@ -158,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _showPage404() {
-        this.page = 'view404';
+        this.page = 'view-404';
       }
 
       _getInfo() {
@@ -166,6 +136,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           .then(data => {
             this.appName = data.appName;
           });
+      }
+
+      _getConfig() {
+        this.backend.get('config')
+        .then(data => {
+          window.webdashConfig = data.config;
+        })
       }
     }
 

@@ -1,10 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.locals.getConfig = () => {
+    let config = {};
+    if (fs.existsSync('./webdash.json')) {
+        config = require('./webdash.json');
+    }
+    return config;
+}
 
 const bowerJson = require('./bower.json');
 
@@ -37,12 +45,22 @@ app.get('/api/webdash/info', (req, res) => {
     res.send({ appName });
 });
 
+app.get('/api/webdash/config', (req, res) => {
+    let config = {};
+    if (fs.existsSync('./webdash.json')){
+        config = require('./webdash.json');
+    }
+
+    res.send({ config });
+});
+
 
 app.get('/api/webdash/plugins', (req, res) => {
     const plugins = getPlugins(bowerJson);
 
     res.send({ plugins });
 });
+
 
 
 app.use(express.static(__dirname + '/build/es6-bundled'));

@@ -1,7 +1,8 @@
 const fs = require('fs');
 const { COPYFILE_EXCL } = fs.constants;
 
-fs.copyFile(`${__dirname}/webdash.json`, 'webdash.json', COPYFILE_EXCL, (err) => {
+console.log(`${__dirname }/webdash-config.json`);
+fs.copyFile(`${__dirname}/webdash-config.json`, 'webdash.json', COPYFILE_EXCL, (err) => {
     if (err){
         //configuration file already exists, we can safely proceed
     }

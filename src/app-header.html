@@ -1,0 +1,24 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-header">
+    <template>
+        <style>
+            header {
+                text-align: center;
+                padding-top: 40px;
+            }
+        </style>
+
+        <header>
+            <h1>Codetogo</h1>
+            <h3>Dashboard</h3>
+        </header>
+    </template>
+    <script>
+        class AppHeader extends Polymer.Element {
+            static get is() { return 'app-header'; }
+        }
+
+        window.customElements.define(AppHeader.is, AppHeader);
+    </script>
+</dom-module>
