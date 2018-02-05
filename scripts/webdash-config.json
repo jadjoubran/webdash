@@ -1,5 +1,6 @@
 {
     "src": "./src/",
-    "dist": "./dist/",
-    "jsBudget": 200
+    "dist": "./dist/", 
+    "jsBudgetLimit": 200,
+    "jsBudgetPath": "./dist/*.min.js"
 }

@@ -11,6 +11,7 @@
     "test:integration": "polymer build # test that psk builds without error with the CLI"
   },
   "dependencies": {
+    "app-root-path": "^2.0.1",
     "chalk": "^2.2.0",
     "cors": "^2.8.4",
     "express": "^4.16.2",
