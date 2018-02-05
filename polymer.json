@@ -2,8 +2,8 @@
   "entrypoint": "index.html",
   "shell": "src/my-app.html",
   "fragments": [
-    "src/my-view1.html",
-    "src/my-view404.html"
+    "src/web-dash.html",
+    "src/view-404.html"
   ],
   "sources": [
     "src/**/*",
