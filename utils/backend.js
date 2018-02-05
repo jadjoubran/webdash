@@ -1,6 +1,14 @@
 class Backend {
-    constructor() {
-        this._baseUrl = 'http://localhost:3000/api/';
+    constructor(pluginName) {
+        if (!pluginName) {
+            throw Error('Must provide plugin name');
+        }
+
+        if (pluginName.startsWith('webdash-')) {
+            pluginName = pluginName.replace(/^webdash\-/, '');
+        }
+
+        this._baseUrl = `http://localhost:3000/api/${pluginName}/`;
         this._defaultHeaders = {
             'Content-Type': 'application/json'
         };
@@ -19,33 +27,41 @@ class Backend {
         return this._defaultBody;
     }
 
+    handleLeadingSlash(endpoint) {
+        if (endpoint.startsWith('/')) {
+            endpoint = endpoint.substr(1);
+        }
+        return endpoint;
+    }
+
     async get(endpoint = '') {
+        endpoint = this.handleLeadingSlash(endpoint);
         const response = await fetch(this.getBaseUrl() + endpoint)
         const data = await response.json();
         return data;
     }
 
     async post(endpoint = '', body = undefined, headers = {}) {
-        this._send('POST', endpoint, body, headers);
+        return await this._send('POST', endpoint, body, headers);
     }
 
     async put(endpoint = '', body = undefined, headers = {}) {
-        this._send('PUT', endpoint, body, headers);
+        return await this._send('PUT', endpoint, body, headers);
     }
 
     async delete(endpoint = '', body = undefined, headers = {}) {
-        this._send('DELETE', endpoint, body, headers);
+        return await this._send('DELETE', endpoint, body, headers);
     }
 
     async _send(method, endpoint = '', body = undefined, headers = {}) {
+        endpoint = this.handleLeadingSlash(endpoint);
         const response = await fetch(this.getBaseUrl() + endpoint, {
             method,
             headers: { ...this.getDefaultHeaders(), ...headers },
             body: JSON.stringify({ ...this.getDefaultBody(), ...body })
         })
-        const data = await response.json();
-        return data;
+        return await response.json();
     }
 }
 
-window.backend = new Backend();
+window.Backend = Backend;

@@ -1,0 +1,95 @@
+<link rel="import" href="../bower_components/web-animations-js/web-animations-next-lite.min.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="plugin-wrapper">
+    <template>
+
+        <style include="shared-styles">
+            :host {
+                display: block;
+                padding: 10px;
+            }
+
+            #plugin-header {
+                background: rgba(0, 0, 0, 0.06);
+                padding: 0 10px 0 30px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            h3{
+                text-transform: uppercase;
+            }
+
+            #plugin-body {
+                padding: 16px;
+            }
+
+            .center-fix{
+                display: flex;
+                align-items: center;
+            }
+            paper-item{
+                --paper-item-selected-weight: normal;
+            }
+            .more{
+                opacity: 0.5;
+                transition: opacity 200ms;
+            }
+            :host(:hover) .more{
+                opacity: 1;
+            }
+        </style>
+
+        <div id="plugin-header">
+            <h3>[[getName()]]</h3>
+            <paper-menu-button vertical-align="top" horizontal-align="right">
+                <paper-icon-button class="more" icon="more-vert" slot="dropdown-trigger" alt="menu"></paper-icon-button>
+                <paper-listbox slot="dropdown-content">
+                    <paper-item class="center-fix">Documentation</paper-item>
+                    <paper-item class="center-fix">Delete</paper-item>
+                </paper-listbox>
+            </paper-menu-button>
+        </div>
+        <div id="plugin-body">
+            <slot></slot>
+        </div>
+
+    </template>
+
+    <script>
+        class PluginWrapper extends Polymer.Element {
+            static get is() { return 'plugin-wrapper'; }
+
+            static get properties() {
+                return {
+                    name: {
+                        type: String,
+                        reflectToAttribute: true,
+                    },
+                }
+            }
+
+            getName() {
+                if (!this.name){
+                    return '';
+                }
+                
+                let name = this.name;
+                name = name.replace('webdash-', '');
+                name = name.replace(/\-/, ' ');
+                return name;
+            }
+        }
+
+        window.customElements.define(PluginWrapper.is, PluginWrapper);
+    </script>
+</dom-module>

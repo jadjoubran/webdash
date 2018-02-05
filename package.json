@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "license": "MIT",
   "scripts": {
+    "postinstall": "node ./scripts/install.js",
     "start": "concurrently \"polymer serve\" \"node api.js\"",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
@@ -12,9 +13,11 @@
   "dependencies": {
     "chalk": "^2.2.0",
     "cors": "^2.8.4",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
+    "@types/node": "^9.4.0",
     "concurrently": "^3.5.1",
     "eslint": "^3.19.0",
     "eslint-plugin-html": "^2.0.0"

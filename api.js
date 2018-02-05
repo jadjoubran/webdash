@@ -15,15 +15,17 @@ for (const plugin of plugins) {
     if (!pluginSrc.routes) {
         continue;
     }
+    //remove leading "webdash-"
+    const pluginRoute = plugin.replace(/^webdash\-/, '');
     const routes = pluginSrc.routes;
     if (routes.get) {
         for (const [route, handler] of Object.entries(routes.get)) {
-            app.get(`/api/${plugin}/${route}`, handler);
+            app.get(`/api/${pluginRoute}/${route}`, handler);
         }
     }
     if (routes.post) {
         for (const [route, handler] of Object.entries(routes.post)) {
-            app.post(`/api/${plugin}/${route}`, handler);
+            app.post(`/api/${pluginRoute}/${route}`, handler);
         }
     }
 }

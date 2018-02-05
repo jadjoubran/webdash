@@ -9,22 +9,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 
 <link rel="lazy-import" href="my-view1.html">
-<link rel="lazy-import" href="my-view2.html">
-<link rel="lazy-import" href="my-view3.html">
 <link rel="lazy-import" href="my-view404.html">
 
 <dom-module id="my-app">
@@ -32,22 +26,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style>
       :host {
         --app-primary-color: #4285f4;
-        --app-secondary-color: black;
+        --app-secondary-color: #1F2D38;
 
         display: block;
+        color: white;
       }
 
-      app-drawer-layout:not([narrow]) [drawer-toggle] {
-        display: none;
+      header {
+        text-align: center;
+        padding-top: 70px;
       }
 
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
+      h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
       }
 
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
+      h3 {
+        margin-top: 0;
+        color: rgba(255, 255, 255, 0.5);
       }
 
       .drawer-list {
@@ -66,43 +63,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: black;
         font-weight: bold;
       }
+
+      #webdash-footer {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        text-transform: uppercase;
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        font-weight: bold;
+        padding: 10px;
+      }
+
+      paper-fab{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        --paper-fab-background: green;
+      }
     </style>
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
 
+    <header>
+      <h1>Codetogo</h1>
+      <h3>Dashboard</h3>
+    </header>
+
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
     </app-route>
 
-    <app-drawer-layout fullbleed narrow="{{narrow}}" force-narrow="true">
-      <!-- Drawer content -->
-      <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-        <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="[[rootPath]]view1">View One</a>
-          <a name="view2" href="[[rootPath]]view2">View Two</a>
-          <a name="view3" href="[[rootPath]]view3">View Three</a>
-        </iron-selector>
-      </app-drawer>
 
-      <!-- Main content -->
-      <app-header-layout has-scrolling-region>
+    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+      <my-view1 name="view1"></my-view1>
+      <my-view404 name="view404"></my-view404>
+    </iron-pages>
 
-        <app-header slot="header" condenses reveals effects="waterfall">
-          <app-toolbar>
-            <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>Web Dash - [[appName]]</div>
-          </app-toolbar>
-        </app-header>
+    <div id="webdash-footer">
+      Web Dash
+    </div>
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-          <my-view404 name="view404"></my-view404>
-        </iron-pages>
-      </app-header-layout>
-    </app-drawer-layout>
+    <paper-fab mini label="?"></paper-fab>
+
   </template>
 
   <script>
@@ -132,6 +135,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       ready() {
         super.ready();
+
+        this.backend = new Backend('webdash');
+
         this._getInfo();
       }
 
@@ -139,11 +145,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
         this.page = page || 'view1';
-
-        // Close a non-persistent drawer when the page & route are changed.
-        if (!this.$.drawer.persistent) {
-          this.$.drawer.close();
-        }
       }
 
       _pageChanged(page) {
@@ -161,7 +162,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _getInfo() {
-          backend.get('webdash/info')
+        this.backend.get('info')
           .then(data => {
             this.appName = data.appName;
           });

@@ -3,8 +3,6 @@
   "shell": "src/my-app.html",
   "fragments": [
     "src/my-view1.html",
-    "src/my-view2.html",
-    "src/my-view3.html",
     "src/my-view404.html"
   ],
   "sources": [
@@ -13,6 +11,7 @@
   ],
   "extraDependencies": [
     "manifest.json",
+    "utils/*.js",
     "bower_components/webcomponentsjs/*.js"
   ],
   "lint": {
