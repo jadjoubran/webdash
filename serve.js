@@ -1,17 +1,19 @@
 const express = require('express');
 
-require('./api.js');
+const api = require('./api.js');
 
 const app = express();
 
-app.use(express.static('./build/es6-bundled'));
+app.use('/api', api);
+
+app.use(express.static(__dirname + '/build/es6-bundled'));
 
 app.use('/bower_components', express.static('./bower_components/'));
 
 app.get('/', (req, res) => {
-    res.sendFile("build/es6-bundled", { root: __dirname })
+    res.sendFile("build/es6-bundled/index.html", { root: __dirname })
 });
 
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log('Example app listening on port 3000!');
 });

@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const pkgDir = require('pkg-dir');
 
 const appRoot = require('app-root-path').toString();
 console.log({appRoot});
@@ -34,24 +33,24 @@ for (const plugin of plugins) {
     const routes = pluginSrc.routes;
     if (routes.get) {
         for (const [route, handler] of Object.entries(routes.get)) {
-            app.get(`/api/${pluginRoute}/${route}`, handler);
+            app.get(`/${pluginRoute}/${route}`, handler);
         }
     }
     if (routes.post) {
         for (const [route, handler] of Object.entries(routes.post)) {
-            app.post(`/api/${pluginRoute}/${route}`, handler);
+            app.post(`/${pluginRoute}/${route}`, handler);
         }
     }
 }
 
-app.get('/api/webdash/info', (req, res) => {
+app.get('/webdash/info', (req, res) => {
     const packageJson = require(`${appRoot}/package.json`);
     const appName = packageJson.name;
 
     res.send({ appName });
 });
 
-app.get('/api/webdash/config', (req, res) => {
+app.get('/webdash/config', (req, res) => {
     let config = {};
     if (fs.existsSync(`${appRoot}/webdash.json`)){
         config = require(`${appRoot}/webdash.json`);
@@ -61,7 +60,7 @@ app.get('/api/webdash/config', (req, res) => {
 });
 
 
-app.get('/api/webdash/plugins', (req, res) => {
+app.get('/webdash/plugins', (req, res) => {
     const plugins = getPlugins(bowerJson);
 
     res.send({ plugins });
@@ -75,11 +74,6 @@ app.get('*', function (req, res) {
     res.sendFile("index.html", { root: '.' });
 });
 
-app.listen(3000, () => {
-    console.log('Webdash server running');
-});
-
-
 function getPlugins(bowerJson) {
     if (!bowerJson) {
         return [];
@@ -91,3 +85,5 @@ function getPlugins(bowerJson) {
 
     return deps.filter(dep => dep.startsWith('webdash-'));
 }
+
+module.exports = app;

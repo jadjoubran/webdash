@@ -8,7 +8,7 @@ class Backend {
             pluginName = pluginName.replace(/^webdash\-/, '');
         }
 
-        this._baseUrl = `http://localhost:3001/api/${pluginName}/`;
+        this._baseUrl = `http://localhost:3000/api/${pluginName}/`;
         this._defaultHeaders = {
             'Content-Type': 'application/json'
         };
