@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const pkgDir = require('pkg-dir');
 
-const appRoot = require('app-root-path').toString() + "/../..";
+const appRoot = require('app-root-path').toString();
 console.log({appRoot});
 
 const app = express();
