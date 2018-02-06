@@ -6,7 +6,7 @@
     "postinstall": "node ./scripts/install.js",
     "dev": "concurrently \"polymer serve\" \"node api.js\"",
     "start": "concurrently \"polymer serve build/es6-bundled\" \"node api.js\"",
-    "prepare": "polymer build",
+    "prepack": "polymer build",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
