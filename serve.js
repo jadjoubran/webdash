@@ -9,7 +9,7 @@ app.use(express.static('./build/es6-bundled'));
 app.use('/bower_components', express.static('./bower_components/'));
 
 app.get('/', (req, res) => {
-    res.sendFile("build/es6-bundled/index.html", { root: '.' });
+    res.sendFile("build/es6-bundled", { root: __dirname })
 });
 
 app.listen(3001, () => {
