@@ -1,6 +1,6 @@
 {
   "name": "webdash",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "license": "MIT",
   "scripts": {
     "postinstall": "node ./scripts/install.js",
