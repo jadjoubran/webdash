@@ -2,6 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const pkgDir = require('pkg-dir');
+
+const appRoot = pkgDir.sync(__dirname);
+console.log(appRoot);
 
 const app = express();
 app.use(cors());
@@ -13,6 +17,10 @@ app.locals.getConfig = () => {
     }
     return config;
 }
+
+
+app.locals.appRoot = appRoot;
+
 
 const bowerJson = require('./bower.json');
 

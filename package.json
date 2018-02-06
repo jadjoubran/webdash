@@ -4,18 +4,20 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "node ./scripts/install.js",
-    "start": "concurrently \"polymer serve\" \"node api.js\"",
+    "dev": "concurrently \"polymer serve\" \"node api.js\"",
+    "start": "concurrently \"polymer serve build/es6-bundled\" \"node api.js\"",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
-    "test:integration": "polymer build # test that psk builds without error with the CLI"
+    "test:integration": "polymer build"
   },
   "dependencies": {
-    "app-root-path": "^2.0.1",
     "chalk": "^2.2.0",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "pkg-dir": "^2.0.0",
+    "serve-static": "^1.13.1"
   },
   "devDependencies": {
     "@types/node": "^9.4.0",

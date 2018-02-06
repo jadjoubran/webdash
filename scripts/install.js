@@ -1,9 +1,11 @@
 const fs = require('fs');
-const appRoot = require('app-root-path');
+const pkgDir = require('pkg-dir');
 const { COPYFILE_EXCL } = fs.constants;
 
+const appRoot = pkgDir.sync(__dirname);
+
 fs.copyFile(`${__dirname}/webdash-config.json`, `${appRoot}/webdash.json`, COPYFILE_EXCL, (err) => {
-    if (err){
+    if (err) {
         //configuration file already exists, we can safely proceed
         return false;
     }
