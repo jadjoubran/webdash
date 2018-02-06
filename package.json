@@ -6,12 +6,15 @@
     "postinstall": "node ./scripts/install.js",
     "dev": "concurrently \"polymer serve\" \"node api.js\"",
     "start": "concurrently \"polymer serve build/es6-bundled\" \"node api.js\"",
-    "prepack": "polymer build",
+    "prepublishOnly": "polymer build",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
     "test:integration": "polymer build"
   },
+  "files": [
+    "build"
+  ],
   "dependencies": {
     "chalk": "^2.2.0",
     "cors": "^2.8.4",
