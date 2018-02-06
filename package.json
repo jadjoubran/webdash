@@ -13,7 +13,7 @@
     "test:integration": "polymer build"
   },
   "files": [
-    "build"
+    "*"
   ],
   "dependencies": {
     "chalk": "^2.2.0",
