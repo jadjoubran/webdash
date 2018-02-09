@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
 
 <dom-module id="app-header">
     <template>
@@ -7,16 +8,65 @@
                 text-align: center;
                 padding-top: 40px;
             }
+
+            #logo {
+                background-color: rgba(0, 0, 0, 0.4);
+                padding: 7px;
+                border-radius: 6px;
+            }
+
+            #project {
+                background-color: var(--gray-9);
+                position: fixed;
+                top: 40px;
+                right: 30px;
+                height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 13px;
+                border-radius: 6px;
+            }
+
+            #project-name {
+                padding-left: 9px;
+            }
         </style>
 
         <header>
-            <h1>Codetogo</h1>
-            <h3>Dashboard</h3>
+            <img id="logo" width="35" height="35" src="images/logo-transparent.svg" alt="Webdash logo">
+
+            <div id="project">
+                <svg width="16" height="16" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Canvas" transform="translate(-580 459)">
+                        <use xlink:href="#path0_fill" transform="translate(580 -461)" fill="#A7B8C4" id="folder" />
+                    </g>
+                    <defs>
+                        <path id="path0_fill" d="M14.5 4c.406 0 .75.156 1.063.438.28.312.437.656.437 1.062v7c0 .438-.156.781-.438 1.063A1.416 1.416 0 0 1 14.5 14h-13c-.438 0-.781-.125-1.063-.438C.126 13.283 0 12.938 0 12.5v-9c0-.406.125-.75.438-1.063A1.436 1.436 0 0 1 1.5 2h5l2 2h6z"
+                        />
+                    </defs>
+                </svg>
+                <paper-tooltip position="left" animation-delay="0">{{appPath}}</paper-tooltip>
+                <div id="project-name">{{appName}}</div>
+            </div>
         </header>
     </template>
     <script>
         class AppHeader extends Polymer.Element {
             static get is() { return 'app-header'; }
+
+            static get properties() {
+                return {
+                    appName: {
+                        type: String,
+                        reflectToAttribute: true
+                    },
+                    appPath: {
+                        type: String,
+                        reflectToAttribute: true
+                    }
+                }
+            }
         }
 
         window.customElements.define(AppHeader.is, AppHeader);

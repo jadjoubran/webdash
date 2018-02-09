@@ -15,6 +15,7 @@
             :host {
                 display: block;
                 padding: 10px;
+                position: relative;
             }
 
             #plugin-header {
@@ -23,28 +24,39 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
             }
 
-            h3{
+            h3 {
                 text-transform: uppercase;
             }
 
             #plugin-body {
                 padding: 16px;
+                margin-top: 65px;
+                min-height: 150px;
+                max-height: 400px;
+                overflow: auto;
             }
 
-            .center-fix{
+            .center-fix {
                 display: flex;
                 align-items: center;
             }
-            paper-item{
+
+            paper-item {
                 --paper-item-selected-weight: normal;
             }
-            .more{
+
+            .more {
                 opacity: 0.5;
                 transition: opacity 200ms;
             }
-            :host(:hover) .more{
+
+            :host(:hover) .more {
                 opacity: 1;
             }
         </style>
@@ -79,10 +91,10 @@
             }
 
             getName() {
-                if (!this.name){
+                if (!this.name) {
                     return '';
                 }
-                
+
                 let name = this.name;
                 name = name.replace('webdash-', '');
                 name = name.replace(/\-/, ' ');

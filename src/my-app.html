@@ -16,8 +16,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="app-header.html">
+<link rel="import" href="app-footer.html">
+<link rel="import" href="app-about.html">
 
 <link rel="lazy-import" href="web-dash.html">
 <link rel="lazy-import" href="view-404.html">
@@ -39,30 +40,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-top: 0;
         color: rgba(255, 255, 255, 0.5);
       }
-
-      #webdash-footer {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
-        text-transform: uppercase;
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        font-weight: bold;
-        padding: 10px;
-      }
-
-      paper-fab{
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        --paper-fab-background: green;
-      }
     </style>
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
 
-    <app-header></app-header>
+    <app-header app-name="{{appName}}" app-path="{{appPath}}"></app-header>
 
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
     </app-route>
@@ -73,11 +56,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <view-404 name="view-404"></view-404>
     </iron-pages>
 
-    <div id="webdash-footer">
-      Web Dash
-    </div>
+    <app-footer></app-footer>
 
-    <paper-fab mini label="?"></paper-fab>
+    <app-about></app-about>
 
   </template>
 
@@ -135,14 +116,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.backend.get('info')
           .then(data => {
             this.appName = data.appName;
+            this.appPath = data.appPath;
           });
       }
 
       _getConfig() {
         this.backend.get('config')
-        .then(data => {
-          window.webdashConfig = data.config;
-        })
+          .then(data => {
+            window.webdashConfig = data.config;
+          })
       }
     }
 

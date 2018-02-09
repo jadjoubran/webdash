@@ -22,7 +22,8 @@
     "iron-icons": "PolymerElements/iron-icons#^2.0.1",
     "paper-material": "PolymerElements/paper-material#^2.0.0",
     "paper-menu": "googlearchive/paper-menu#^1.3.0",
-    "paper-fab": "PolymerElements/paper-fab#^2.0.0"
+    "paper-fab": "PolymerElements/paper-fab#^2.0.0",
+    "paper-tooltip": "PolymerElements/paper-tooltip#^2.0.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

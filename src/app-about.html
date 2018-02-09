@@ -1,0 +1,26 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+
+<dom-module id="app-about">
+    <template>
+        <style>
+            paper-fab {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                --paper-fab-background: green;
+            }
+        </style>
+
+        <paper-fab mini label="?"></paper-fab>
+
+    </template>
+    <script>
+        class AppAbout extends Polymer.Element {
+            static get is() { return 'app-about'; }
+
+        }
+
+        window.customElements.define(AppAbout.is, AppAbout);
+    </script>
+</dom-module>

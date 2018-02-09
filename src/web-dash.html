@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="plugin-wrapper.html">
+<link rel="import" href="install-plugin.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="web-dash">
@@ -11,37 +12,46 @@
       }
 
       #plugins {
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 20px;
+        margin-right: 20px;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: flex-start;
       }
 
       .plugin {
         padding: 0;
-        min-height: 350px;
-        max-height: 800px;
-        flex: 1 1 45%;
-        overflow: auto;
+        flex: 1 1 45vw;
+        max-width: 45vw;
+        min-width: 28vw;
         background-color: gray;
         color: white;
         border-radius: 6px;
       }
 
-      .plugin:nth-child(n) {
+      .plugin:nth-child(4n + 1) {
         background-image: linear-gradient(131.69deg, #29D2B2 16.12%, #3AB0D2 79.43%);
       }
 
-      .plugin:nth-child(2n) {
+      .plugin:nth-child(4n + 2) {
         background-image: linear-gradient(123.33deg, #FFE924 17.2%, #FFBB54 78.26%);
+      }
+
+      .plugin:nth-child(4n + 3) {
+        background: linear-gradient(114.52deg, #F89E2D 11.93%, #FF7857 89.39%), #FFFFFF;
+      }
+
+      .plugin:nth-child(4n + 4) {
+        background: linear-gradient(286.53deg, #C070FF 11.18%, #FF5CF8 88.03%);
       }
     </style>
 
-    <div id="plugins">
+    <div id="plugins"></div>
 
-    </div>
+
+    <!-- <template is="dom-if" if="{{showInstallPlugin}}"> -->
+      <!-- <install-plugin></install-plugin> -->
+    <!-- </template> -->
 
   </template>
 
@@ -61,6 +71,9 @@
               return false;
             }
 
+            this.plugins = plugins;
+            this.showInstallPlugin = plugins.length === 1 ? true : false;
+
             for (const plugin of plugins) {
               Polymer.importHref([`../bower_components/${plugin}/${plugin}.html`], () => {
                 const wrapper = document.createElement('plugin-wrapper');
@@ -73,6 +86,7 @@
                 this.$.plugins.appendChild(wrapper);
               });
             }
+
           });
       }
     }

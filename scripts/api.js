@@ -3,19 +3,24 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
-const appRoot = require('app-root-path').toString();
-console.log({appRoot});
+let appRoot = require('app-root-path').toString();
+let npmLinkMode = process.argv.find(arg => arg.startsWith('--project='));
+if (npmLinkMode){
+    appRoot = npmLinkMode.substr('--project='.length);
+}
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.locals.getConfig = () => {
+const getConfig = () => {
     let config = {};
     if (fs.existsSync(`${appRoot}/webdash.json`)) {
         config = require(`${appRoot}/webdash.json`);
     }
     return config;
 }
+
+app.locals.config = getConfig();
 
 app.locals.appRoot = appRoot;
 
@@ -45,9 +50,14 @@ for (const plugin of plugins) {
 
 app.get('/webdash/info', (req, res) => {
     const packageJson = require(`${appRoot}/package.json`);
-    const appName = packageJson.name;
+    let appName = packageJson.name;
+    if (!appName){
+        //fallback to folder name
+        appName = appRoot.substr(appRoot.lastIndexOf('/') + 1)
+    }
+    const appPath = appRoot;
 
-    res.send({ appName });
+    res.send({ appName, appPath });
 });
 
 app.get('/webdash/config', (req, res) => {

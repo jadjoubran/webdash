@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-footer">
+    <template>
+        <style>
+            footer {
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 4px;
+                text-transform: uppercase;
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                font-weight: bold;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+            }
+            #logo{
+                padding-right: 8px;
+            }
+        </style>
+
+        <footer>
+            <img id="logo" width="19" height="19" src="images/logo-transparent.svg" alt="Webdash logo">
+            <div>Web Dash</div>
+        </footer>
+
+    </template>
+    <script>
+        class AppFooter extends Polymer.Element {
+            static get is() { return 'app-footer'; }
+
+        }
+
+        window.customElements.define(AppFooter.is, AppFooter);
+    </script>
+</dom-module>

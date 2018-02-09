@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "node ./scripts/install.js",
-    "dev": "concurrently \"polymer serve\" \"node api.js\"",
+    "dev": "concurrently \"polymer serve\" \"node serve.js\"",
     "start": "concurrently \"polymer serve build/es6-bundled\" \"node api.js\"",
     "prepublishOnly": "polymer build",
     "lint": "npm run lint:javascript && polymer lint",
@@ -15,6 +15,9 @@
   "files": [
     "*"
   ],
+  "bin": {
+    "eslint": "./scripts/index.js"
+  },
   "dependencies": {
     "app-root-path": "^2.0.1",
     "chalk": "^2.2.0",
@@ -22,7 +25,8 @@
     "express": "^4.16.2",
     "lodash": "^4.17.5",
     "pkg-dir": "^2.0.0",
-    "serve-static": "^1.13.1"
+    "serve-static": "^1.13.1",
+    "yargs": "^11.0.0"
   },
   "devDependencies": {
     "@types/node": "^9.4.0",
