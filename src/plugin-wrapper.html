@@ -67,7 +67,7 @@
                 <paper-icon-button class="more" icon="more-vert" slot="dropdown-trigger" alt="menu"></paper-icon-button>
                 <paper-listbox slot="dropdown-content">
                     <paper-item class="center-fix">Documentation</paper-item>
-                    <paper-item class="center-fix">Delete</paper-item>
+                    <paper-item class="center-fix" on-click="showDelete">Delete</paper-item>
                 </paper-listbox>
             </paper-menu-button>
         </div>
@@ -99,6 +99,10 @@
                 name = name.replace('webdash-', '');
                 name = name.replace(/\-/, ' ');
                 return name;
+            }
+
+            showDelete(event) {
+                alert(`npm uninstall ${this.name} --save-dev`);
             }
         }
 

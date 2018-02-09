@@ -16,7 +16,7 @@
     "*"
   ],
   "bin": {
-    "eslint": "./scripts/index.js"
+    "webdash": "./scripts/index.js"
   },
   "dependencies": {
     "app-root-path": "^2.0.1",
