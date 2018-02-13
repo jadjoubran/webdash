@@ -28,13 +28,16 @@
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
     "webdash-package-json": "*",
-    "webdash-performance-budget": "*"
+    "webdash-performance-budget": "*",
+    "webdash-PWA-manifest": "*"
   },
   "scripts": {
     "postinstall": "node ./scripts/install.js"
   },
   "resolutions": {
     "iron-overlay-behavior": "^2.2.0",
-    "paper-fab": "^2.0.0"
+    "paper-fab": "^2.0.0",
+    "polymer": "^2.0.0",
+    "webcomponentsjs": "^1.0.0"
   }
 }

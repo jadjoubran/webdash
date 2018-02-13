@@ -11,19 +11,11 @@
         padding: 10px;
       }
 
-      #plugins {
-        margin-left: 20px;
-        margin-right: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
+      #plugins {}
 
       .plugin {
+        width: 45vw;
         padding: 0;
-        flex: 1 1 45vw;
-        max-width: 45vw;
-        min-width: 28vw;
         background-color: gray;
         color: white;
         border-radius: 6px;
@@ -50,11 +42,13 @@
 
 
     <!-- <template is="dom-if" if="{{showInstallPlugin}}"> -->
-      <!-- <install-plugin></install-plugin> -->
+    <!-- <install-plugin></install-plugin> -->
     <!-- </template> -->
 
   </template>
 
+  <script src="/node_modules/bricks.js/dist/bricks.js"></script>
+  <script src="/node_modules/resize-observer-polyfill/dist/ResizeObserver.global.js"></script>
   <script>
     class WebDash extends Polymer.Element {
       static get is() { return 'web-dash'; }
@@ -84,10 +78,54 @@
                 const element = document.createElement(plugin);
                 wrapper.appendChild(element);
                 this.$.plugins.appendChild(wrapper);
+                var ro = new ResizeObserver(entries => {
+                  this.refreshMasonry();
+                });
+
+                // Observe one or multiple elements
+                ro.observe(wrapper);
+
               });
             }
 
+            // setTimeout(() => {
+            // for (const plugin of plugins) {
+            //   Polymer.importHref([`../bower_components/${plugin}/${plugin}.html`], () => {
+            //     const wrapper = document.createElement('plugin-wrapper');
+            //     wrapper.setAttribute('name', plugin);
+            //     wrapper.classList.add('plugin');
+            //     wrapper.classList.add('card');
+
+            //     const element = document.createElement(plugin);
+            //     wrapper.appendChild(element);
+            //     this.$.plugins.appendChild(wrapper);
+            //   });
+            // }
+            // }, 200);
+
+            this.setupMasonry();
+
           });
+      }
+
+      setupMasonry() {
+        const sizes = [
+          { columns: 2, gutter: 10 }
+        ];
+
+        this.instance = Bricks({
+          container: this.$.plugins,
+          packed: 'data-packed',
+          sizes,
+          position: false
+        });
+        this.refreshMasonry();
+      }
+
+      refreshMasonry() {
+        if (!this.instance) return false;
+
+        this.instance.pack();
       }
     }
 

@@ -1,21 +1,37 @@
 {
-  "name": "Webdash",
-  "short_name": "Webdash",
-  "description": "Webdash",
-  "icons": [
-    {
-      "src": "images/manifest/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "images/manifest/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#3f51b5",
-  "background_color": "#3f51b5"
+    "name": "Flipkart Lite",
+    "short_name": "Flipkart Lite",
+    "description": "India's most popular shopping destination. Trusted by over 7 Crore Indians. Shop the Online Megastore with the Flipkart web app. Choose from the massive selection of original products in Fashion, Electronics, Books, Mobiles and other categories.",
+    "icons": [
+        {
+            "src": "https://img1a.flixcart.com/www/linchpin/batman-returns/logo_lite-cbb3574d.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://rukminim1.flixcart.com/www/256/256/promos/06/11/2017/88a36c83-806c-4523-9b9e-38085e342e83.png?q=100",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "https://rukminim1.flixcart.com/www/384/384/promos/06/11/2017/eb47fb81-dd6f-4de8-829e-761416b853a2.png?q=100",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "https://rukminim1.flixcart.com/www/512/512/promos/06/11/2017/3d5312be-5667-4268-9b99-dfba34266d83.png?q=100",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "gcm_sender_id": "656085505957",
+    "gcm_user_visible_only": true,
+    "start_url": "/?start_url=homescreenicon",
+    "permissions": [
+        "gcm"
+    ],
+    "orientation": "portrait",
+    "display": "standalone",
+    "theme_color": "#2874f0",
+    "background_color": "#2874f0"
 }
