@@ -15,11 +15,15 @@
                 border-radius: 6px;
             }
 
-            #project {
-                background-color: var(--gray-9);
-                position: fixed;
+            #right-container {
+                position: absolute;
                 top: 40px;
                 right: 30px;
+                display: flex;
+            }
+
+            #project {
+                background-color: var(--gray-9);
                 height: 42px;
                 display: flex;
                 align-items: center;
@@ -31,23 +35,51 @@
             #project-name {
                 padding-left: 9px;
             }
+
+            #add {
+                background-color: var(--brand);
+                margin-right: 11px;
+                border-radius: 6px;
+                display: flex;
+                align-items: center;
+                padding: 0 15px;
+            }
+
+            #add svg {
+                margin-right: 10px;
+            }
         </style>
 
         <header>
             <img id="logo" width="35" height="35" src="images/logo-transparent.svg" alt="Webdash logo">
 
-            <div id="project">
-                <svg width="16" height="16" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g id="Canvas" transform="translate(-580 459)">
-                        <use xlink:href="#path0_fill" transform="translate(580 -461)" fill="#A7B8C4" id="folder" />
-                    </g>
-                    <defs>
-                        <path id="path0_fill" d="M14.5 4c.406 0 .75.156 1.063.438.28.312.437.656.437 1.062v7c0 .438-.156.781-.438 1.063A1.416 1.416 0 0 1 14.5 14h-13c-.438 0-.781-.125-1.063-.438C.126 13.283 0 12.938 0 12.5v-9c0-.406.125-.75.438-1.063A1.436 1.436 0 0 1 1.5 2h5l2 2h6z"
-                        />
-                    </defs>
-                </svg>
-                <paper-tooltip position="left" animation-delay="0">{{appPath}}</paper-tooltip>
-                <div id="project-name">{{appName}}</div>
+            <div id="right-container">
+                <div id="add">
+                    <svg width="14" height="15" viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Canvas0" transform="translate(-431 -1444)">
+                            <use xlink:href="#path0_fill" transform="translate(430 1443.8)" fill="#FFF" id="plus" />
+                        </g>
+                        <defs>
+                            <path id="path0_fill" d="M15 9.188a.754.754 0 0 1-.219.53.732.732 0 0 1-.531.22H9.937v4.312a.754.754 0 0 1-.218.531.732.732 0 0 1-.531.219H6.812c-.218 0-.406-.063-.53-.219-.157-.125-.22-.312-.22-.531V9.937H1.75c-.219 0-.406-.062-.531-.218C1.062 9.594 1 9.406 1 9.188V6.812a.73.73 0 0 1 .219-.53.754.754 0 0 1 .531-.22h4.313V1.75a.73.73 0 0 1 .218-.531A.754.754 0 0 1 6.813 1h2.375c.187 0 .374.094.53.219.126.156.22.343.22.531v4.313h4.312c.188 0 .375.093.531.218.125.157.219.344.219.532v2.375z"
+                            />
+                        </defs>
+                    </svg>
+                    Add Plugin
+                </div>
+
+                <div id="project">
+                    <svg width="16" height="16" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Canvas1" transform="translate(-580 459)">
+                            <use xlink:href="#path1_fill" transform="translate(580 -461)" fill="#A7B8C4" id="folder" />
+                        </g>
+                        <defs>
+                            <path id="path1_fill" d="M14.5 4c.406 0 .75.156 1.063.438.28.312.437.656.437 1.062v7c0 .438-.156.781-.438 1.063A1.416 1.416 0 0 1 14.5 14h-13c-.438 0-.781-.125-1.063-.438C.126 13.283 0 12.938 0 12.5v-9c0-.406.125-.75.438-1.063A1.436 1.436 0 0 1 1.5 2h5l2 2h6z"
+                            />
+                        </defs>
+                    </svg>
+                    <paper-tooltip position="left" animation-delay="0">{{appPath}}</paper-tooltip>
+                    <div id="project-name">{{appName}}</div>
+                </div>
             </div>
         </header>
     </template>

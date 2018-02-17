@@ -23,13 +23,16 @@
     "paper-material": "PolymerElements/paper-material#^2.0.0",
     "paper-menu": "googlearchive/paper-menu#^1.3.0",
     "paper-fab": "PolymerElements/paper-fab#^2.0.0",
-    "paper-tooltip": "PolymerElements/paper-tooltip#^2.0.1"
+    "paper-tooltip": "PolymerElements/paper-tooltip#^2.0.1",
+    "paper-toast": "PolymerElements/paper-toast#^2.0.0",
+    "paper-button": "PolymerElements/paper-button#^2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
     "webdash-package-json": "*",
     "webdash-performance-budget": "*",
-    "webdash-PWA-manifest": "*"
+    "webdash-npm-scripts": "*",
+    "webdash-pwa-manifest": "*"
   },
   "scripts": {
     "postinstall": "node ./scripts/install.js"
@@ -38,6 +41,7 @@
     "iron-overlay-behavior": "^2.2.0",
     "paper-fab": "^2.0.0",
     "polymer": "^2.0.0",
-    "webcomponentsjs": "^1.0.0"
+    "webcomponentsjs": "^1.0.0",
+    "paper-button": "^2.0.0"
   }
 }

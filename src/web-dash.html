@@ -11,31 +11,29 @@
         padding: 10px;
       }
 
-      #plugins {}
+      #plugins {
+        margin-left: 80px;
+        margin-right: 80px;
+        margin-top: 30px;
+        width: auto !important;
+      }
 
       .plugin {
-        width: 45vw;
+        width: calc(50vw - 105px);
         padding: 0;
         background-color: gray;
         color: white;
         border-radius: 6px;
+        background-color: #3b4c59;
       }
 
-      .plugin:nth-child(4n + 1) {
-        background-image: linear-gradient(131.69deg, #29D2B2 16.12%, #3AB0D2 79.43%);
+      @media screen and (max-width: 800px) {
+        .plugin {
+          width: calc(100vw - 175px);
+        }
       }
 
-      .plugin:nth-child(4n + 2) {
-        background-image: linear-gradient(123.33deg, #FFE924 17.2%, #FFBB54 78.26%);
-      }
-
-      .plugin:nth-child(4n + 3) {
-        background: linear-gradient(114.52deg, #F89E2D 11.93%, #FF7857 89.39%), #FFFFFF;
-      }
-
-      .plugin:nth-child(4n + 4) {
-        background: linear-gradient(286.53deg, #C070FF 11.18%, #FF5CF8 88.03%);
-      }
+      paper-tooltip {}
     </style>
 
     <div id="plugins"></div>
@@ -88,20 +86,6 @@
               });
             }
 
-            // setTimeout(() => {
-            // for (const plugin of plugins) {
-            //   Polymer.importHref([`../bower_components/${plugin}/${plugin}.html`], () => {
-            //     const wrapper = document.createElement('plugin-wrapper');
-            //     wrapper.setAttribute('name', plugin);
-            //     wrapper.classList.add('plugin');
-            //     wrapper.classList.add('card');
-
-            //     const element = document.createElement(plugin);
-            //     wrapper.appendChild(element);
-            //     this.$.plugins.appendChild(wrapper);
-            //   });
-            // }
-            // }, 200);
 
             this.setupMasonry();
 
@@ -110,7 +94,8 @@
 
       setupMasonry() {
         const sizes = [
-          { columns: 2, gutter: 10 }
+          { columns: 1, gutter: 30 },
+          { mq: '800px', columns: 2, gutter: 30 },
         ];
 
         this.instance = Bricks({

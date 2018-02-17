@@ -3,9 +3,11 @@
   "version": "0.0.20",
   "license": "MIT",
   "scripts": {
-    "postinstall": "node ./scripts/install.js",
+    "hello:world": "echo \"hello world\"",
+    "multiline": "echo \"this is\nawesome\"",
     "dev": "concurrently \"polymer serve\" \"node serve.js\"",
     "start": "concurrently \"polymer serve build/es6-bundled\" \"node api.js\"",
+    "postinstall": "node ./scripts/install.js",
     "prepublishOnly": "polymer build",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",

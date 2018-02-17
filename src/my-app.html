@@ -17,7 +17,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="app-header.html">
-<link rel="import" href="app-footer.html">
 <link rel="import" href="app-about.html">
 
 <link rel="lazy-import" href="web-dash.html">
@@ -29,6 +28,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
         color: white;
+        --paper-tooltip-delay-in: 0;
+        --paper-tooltip-background: rgba(0, 0, 0, 0.9);
+        --paper-tooltip: {
+          font-size: 15px;
+          padding: 10px;
+        }
+
+        --brand: #32BFC4;
       }
 
       h1 {
@@ -55,8 +62,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <web-dash name="web-dash"></web-dash>
       <view-404 name="view-404"></view-404>
     </iron-pages>
-
-    <app-footer></app-footer>
 
     <app-about></app-about>
 

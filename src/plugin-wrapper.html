@@ -6,6 +6,8 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="plugin-wrapper">
@@ -59,6 +61,19 @@
             :host(:hover) .more {
                 opacity: 1;
             }
+
+            .toast-button {
+                color: white;
+                font-weight: bold;
+            }
+
+            paper-toast {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                min-width: 0;
+            }
         </style>
 
         <div id="plugin-header">
@@ -74,6 +89,10 @@
         <div id="plugin-body">
             <slot></slot>
         </div>
+
+        <paper-toast id="toast">
+            <paper-button class="toast-button" on-click="copy">Copy</paper-button>
+        </paper-toast>
 
     </template>
 
@@ -106,7 +125,26 @@
             }
 
             showDelete(event) {
-                alert(`npm uninstall ${this.name} --save-dev`);
+                this.deleteMessage = `npm uninstall ${this.name} --save-dev`;
+
+                const toast = this.$.toast;
+                toast.text = this.deleteMessage;
+                toast.fitInto = this.$['plugin-body'];
+                toast.open();
+            }
+
+            copy() {
+                this.$.toast.hide();
+                if (!this.deleteMessage) return false;
+
+                let textarea = document.createElement('textarea');
+                textarea.setAttribute('type', 'hidden');
+                textarea.style.cssText = 'position:absolute;left:-500px;';
+                textarea.textContent = this.deleteMessage.trim();
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                textarea.remove();
             }
         }
 
