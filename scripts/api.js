@@ -29,7 +29,12 @@ const bowerJson = require(`${appRoot}/bower.json`);
 const plugins = getPlugins(bowerJson);
 
 for (const plugin of plugins) {
-    const pluginSrc = require(`${appRoot}/bower_components/${plugin}/api.js`);
+    const apiPath = `${appRoot}/bower_components/${plugin}/api.js`;
+    if (!fs.existsSync(apiPath)){
+        continue;
+    }
+    const pluginSrc = require(apiPath);
+    
     if (!pluginSrc.routes) {
         continue;
     }

@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webdash-static-deploy": "*",
     "webdash-package-json": "*",
     "webdash-performance-budget": "*",
     "webdash-npm-scripts": "*",
@@ -42,6 +43,11 @@
     "paper-fab": "^2.0.0",
     "polymer": "^2.0.0",
     "webcomponentsjs": "^1.0.0",
-    "paper-button": "^2.0.0"
+    "paper-button": "^2.0.0",
+    "iron-flex-layout": "^2.0.0",
+    "iron-iconset-svg": "^2.0.0",
+    "iron-meta": "^2.0.5",
+    "iron-icon": "^2.0.1",
+    "paper-material": "^2.0.0"
   }
 }
