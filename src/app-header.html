@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="add-plugin.html">
 
 <dom-module id="app-header">
     <template>
@@ -36,17 +37,8 @@
                 padding-left: 9px;
             }
 
-            #add {
-                background-color: var(--brand);
+            add-plugin {
                 margin-right: 11px;
-                border-radius: 6px;
-                display: flex;
-                align-items: center;
-                padding: 0 15px;
-            }
-
-            #add svg {
-                margin-right: 10px;
             }
         </style>
 
@@ -54,19 +46,7 @@
             <img id="logo" width="35" height="35" src="images/logo-transparent.svg" alt="Webdash logo">
 
             <div id="right-container">
-                <div id="add">
-                    <svg width="14" height="15" viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g id="Canvas0" transform="translate(-431 -1444)">
-                            <use xlink:href="#path0_fill" transform="translate(430 1443.8)" fill="#FFF" id="plus" />
-                        </g>
-                        <defs>
-                            <path id="path0_fill" d="M15 9.188a.754.754 0 0 1-.219.53.732.732 0 0 1-.531.22H9.937v4.312a.754.754 0 0 1-.218.531.732.732 0 0 1-.531.219H6.812c-.218 0-.406-.063-.53-.219-.157-.125-.22-.312-.22-.531V9.937H1.75c-.219 0-.406-.062-.531-.218C1.062 9.594 1 9.406 1 9.188V6.812a.73.73 0 0 1 .219-.53.754.754 0 0 1 .531-.22h4.313V1.75a.73.73 0 0 1 .218-.531A.754.754 0 0 1 6.813 1h2.375c.187 0 .374.094.53.219.126.156.22.343.22.531v4.313h4.312c.188 0 .375.093.531.218.125.157.219.344.219.532v2.375z"
-                            />
-                        </defs>
-                    </svg>
-                    Add Plugin
-                </div>
-
+                <add-plugin></add-plugin>
                 <div id="project">
                     <svg width="16" height="16" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Canvas1" transform="translate(-580 459)">

@@ -28,11 +28,11 @@
     "express": "^4.16.2",
     "lodash": "^4.17.5",
     "pkg-dir": "^2.0.0",
-    "serve-static": "^1.13.1",
+    "serve-static": "^1.13.2",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "@types/node": "^9.4.0",
+    "@types/node": "^9.4.6",
     "concurrently": "^3.5.1",
     "eslint": "^3.19.0",
     "eslint-plugin-html": "^2.0.0",

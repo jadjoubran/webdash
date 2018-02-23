@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="plugin-wrapper.html">
-<link rel="import" href="install-plugin.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="empty-state.html">
 
 <dom-module id="web-dash">
   <template>
@@ -40,9 +40,9 @@
     <div id="plugins"></div>
 
 
-    <!-- <template is="dom-if" if="{{showInstallPlugin}}"> -->
-    <!-- <install-plugin></install-plugin> -->
-    <!-- </template> -->
+    <template is="dom-if" if="{{!plugins.length}}">
+      <empty-state></empty-state>
+    </template>
 
   </template>
 
@@ -63,9 +63,7 @@
             if (!plugins || !plugins.length) {
               return false;
             }
-
             this.plugins = plugins;
-            this.showInstallPlugin = plugins.length === 1 ? true : false;
 
             for (const plugin of plugins) {
               Polymer.importHref([`../bower_components/${plugin}/${plugin}.html`], () => {

@@ -29,7 +29,6 @@
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
-    "webdash-static-deploy": "*",
     "webdash-package-json": "*",
     "webdash-performance-budget": "*",
     "webdash-npm-scripts": "*",
