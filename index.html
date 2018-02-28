@@ -31,34 +31,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     -->
   <base href="/">
 
-  <link rel="icon" href="images/favicon.ico">
-
-  <!-- See https://goo.gl/OOhYW5 -->
-  <link rel="manifest" href="manifest.json">
-
-  <!-- See https://goo.gl/qRE0vM -->
-  <meta name="theme-color" content="#3f51b5">
-
-  <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="My App">
-
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="My App">
-
-  <!-- Homescreen icons -->
-  <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
-
-  <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
-  <meta name="msapplication-TileColor" content="#3f51b5">
-  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicons/manifest.json">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#32bfc4">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/images/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
 
   <script>
     window.Polymer = { rootPath: '/' };
@@ -93,6 +74,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     :root {
+      --brand: #32BFC4;
+      --accent: #FF7857;
+      --danger: #ff5252;
+      --success: #66BB6A;
+      --alternative: #F0B03A;
       --gray-9: #18232B;
       --gray-8: #1F2D38;
       --gray-7: #375063;
@@ -105,6 +91,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </head>
 
 <body>
+
+  <script src="bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+
   <my-app></my-app>
   <noscript>
     Please enable JavaScript to view this website.

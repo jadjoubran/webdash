@@ -1,24 +1,190 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="/bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="/bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="/bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
 
 <dom-module id="app-about">
     <template>
         <style>
-            paper-fab {
+            #fab {
                 position: fixed;
                 bottom: 20px;
                 right: 20px;
-                --paper-fab-background: green;
+                background-color: white;
+                border-radius: 6px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            paper-ripple {
+                color: var(--brand);
+            }
+
+            #about {
+                position: fixed;
+                background-color: white;
+                bottom: 72px;
+                right: 20px;
+                border-radius: 3px;
+                display: flex;
+                box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.25);
+                opacity: 0;
+                transition: transform 200ms, opacity 150ms;
+                transform: scale(0);
+                will-change: transform;
+                transform-origin: bottom right;
+            }
+
+            #about.show {
+                transform: scale(1) !important;
+                opacity: 1;
+            }
+
+            #webdash {
+                background-color: #F5F6F7;
+                padding: 20px;
+                color: #7D95A8;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                min-width: 190px;
+            }
+
+            #logo-container {
+                padding-bottom: 55px;
+                display: flex;
+                align-items: flex-start;
+            }
+
+            #logo {
+                margin-right: 15px;
+            }
+
+            h3 {
+                margin: 0;
+                font-size: 14px;
+            }
+
+            .version {
+                margin: 0;
+                font-size: 12px;
+            }
+
+            .created-by {
+                display: flex;
+                align-items: center;
+            }
+
+            .created-by a {
+                display: flex;
+            }
+
+            .created-by img {
+                padding-left: 9px;
+            }
+
+            #options {
+                min-width: 190px;
+            }
+
+            paper-item {
+                cursor: pointer;
+            }
+
+            paper-item:hover {
+                background-color: #F5F6F7;
             }
         </style>
 
-        <paper-fab mini label="?"></paper-fab>
+        <div id="about">
+            <div id="webdash">
+                <div id="logo-container">
+                    <img id="logo" width="35" height="35" src="images/logo.svg" alt="Webdash logo">
+                    <div>
+                        <h3>Webdash</h3>
+                        <div class="version">V1.0.0</div>
+                    </div>
+                </div>
+
+                <div class="created-by">
+                    <div>Created by</div>
+                    <a href="https://jadjoubran.io" target="_blank" rel="nofollower">
+                        <img id="jad" width="18" height="18" src="images/jad-joubran.png" alt="Jad Joubran">
+                    </a>
+                    <a href="https://nicolesaidy.com" target="_blank" rel="nofollower">
+                        <img id="nicole" width="18" height="18" src="images/nicole-saidy.png" alt="Nicole Saidy">
+                    </a>
+                </div>
+                <paper-tooltip position="top" animation-delay="0" for="jad">Jad Joubran</paper-tooltip>
+                <paper-tooltip position="top" animation-delay="0" for="nicole">Nicole Saidy</paper-tooltip>
+            </div>
+            <div id="options">
+                <paper-listbox slot="dropdown-content">
+                    <paper-item class="center-fix" on-click="" ink>Help &amp; Feedback</paper-item>
+                    <paper-item class="center-fix" on-click="">Github Repository</paper-item>
+                    <paper-item class="center-fix" on-click="">Create a Plugin</paper-item>
+                </paper-listbox>
+            </div>
+        </div>
+
+        <div id="fab" on-click="toggle">
+            <paper-ripple></paper-ripple>
+            <svg fill="#000000" height="18" viewBox="0 0 384 512" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path id="help" d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132
+                6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993
+                51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86
+                125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195
+                31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z" />
+                <path id="close" style="visibility:hidden" d="M323.1 441l53.9-53.9c9.4-9.4 9.4-24.5 0-33.9L279.8 256l97.2-97.2c9.4-9.4 9.4-24.5 0-33.9L323.1 71c-9.4-9.4-24.5-9.4-33.9
+                0L192 168.2 94.8 71c-9.4-9.4-24.5-9.4-33.9 0L7 124.9c-9.4 9.4-9.4 24.5 0 33.9l97.2 97.2L7 353.2c-9.4 9.4-9.4 24.5 0 33.9L60.9
+                441c9.4 9.4 24.5 9.4 33.9 0l97.2-97.2 97.2 97.2c9.3 9.3 24.5 9.3 33.9 0z" />
+            </svg>
+        </div>
 
     </template>
     <script>
         class AppAbout extends Polymer.Element {
             static get is() { return 'app-about'; }
 
+            ready() {
+                super.ready();
+                this.isOpen = false;
+                this.helpPath = this.$.help.getAttribute('d');
+                this.closePath = this.$.close.getAttribute('d');
+                this.help = Snap(this.$.help);
+                
+            }
+
+            toggle() {
+                if (this.isOpen) {
+                    return this.close();
+                }
+                return this.open();
+            }
+
+            open() {
+                this.isOpen = true;
+
+                this.help.animate({
+                    path: this.closePath
+                }, 180, mina.easein);
+
+                this.$.about.classList.add('show');
+            }
+
+            close() {
+                this.isOpen = false;
+                this.help.animate({
+                    path: this.helpPath
+                }, 180, mina.easein);
+
+                this.$.about.classList.remove('show');
+            }
         }
 
         window.customElements.define(AppAbout.is, AppAbout);

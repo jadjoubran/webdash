@@ -3,7 +3,7 @@
   "version": "0.0.20",
   "license": "MIT",
   "scripts": {
-    "hello:world": "echo \"hello world\"",
+    "sample": "echo \"hello world\"",
     "multiline": "echo \"this is\nawesome\"",
     "dev": "concurrently \"polymer serve\" \"node serve.js\"",
     "start": "concurrently \"polymer serve build/es6-bundled\" \"node api.js\"",
@@ -23,10 +23,10 @@
   "dependencies": {
     "app-root-path": "^2.0.1",
     "bricks.js": "^1.8.0",
-    "chalk": "^2.3.1",
+    "chalk": "^2.2.0",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.0",
     "pkg-dir": "^2.0.0",
     "serve-static": "^1.13.2",
     "yargs": "^11.0.0"

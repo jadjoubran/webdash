@@ -10,7 +10,6 @@
     "images/**/*"
   ],
   "extraDependencies": [
-    "manifest.json",
     "utils/*.js",
     "bower_components/webcomponentsjs/*.js"
   ],

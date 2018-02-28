@@ -27,14 +27,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style>
       :host {
         display: block;
-        --brand: #32BFC4;
         color: white;
-
 
         --paper-tooltip-background: rgba(0, 0, 0, 0.9);
         --paper-tooltip: {
           font-size: 15px;
           padding: 10px;
+        }
+        --paper-toast-background-color: #677780;
+        --paper-toast: {
+          padding: 3px 14px;
+          margin: 0;
         }
       }
 
@@ -122,6 +125,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           .then(data => {
             this.appName = data.appName;
             this.appPath = data.appPath;
+            this.version = data.version;
+            // this.fire('iron-signal', { info: data });
           });
       }
 
