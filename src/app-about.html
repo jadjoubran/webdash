@@ -106,7 +106,9 @@
                     <img id="logo" width="35" height="35" src="images/logo.svg" alt="Webdash logo">
                     <div>
                         <h3>Webdash</h3>
-                        <div class="version">V1.0.0</div>
+                        <div class="version">
+                            <span>{{version}}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -157,7 +159,12 @@
                 this.helpPath = this.$.help.getAttribute('d');
                 this.closePath = this.$.close.getAttribute('d');
                 this.help = Snap(this.$.help);
-                
+                this.version = '';
+                window.addEventListener('webdash-info', e => {
+                    if (e.detail && e.detail.version){
+                        this.version = `V${e.detail.version}`;
+                    }
+                });
             }
 
             toggle() {

@@ -126,7 +126,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.appName = data.appName;
             this.appPath = data.appPath;
             this.version = data.version;
-            // this.fire('iron-signal', { info: data });
+             window.dispatchEvent(new CustomEvent('webdash-info', {
+              detail: data
+            }))
           });
       }
 

@@ -1,7 +1,7 @@
 {
     "src": "./src/",
     "dist": "./build/es6-bundled/",
-    "jsBudgetLimit": 400,
+    "jsBudgetLimit": 300,
     "jsBudgetPath": "./build/es6-bundled/src/*.html",
     "manifestPath": "./images/favicons/manifest.json"
 }

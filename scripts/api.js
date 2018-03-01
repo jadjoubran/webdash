@@ -61,10 +61,12 @@ app.get("/webdash/info", (req, res) => {
     appName = appRoot.substr(appRoot.lastIndexOf("/") + 1);
   }
   const appPath = appRoot;
-  let version = "0.0.0";
+  let version = "";
 
   if (fs.existsSync("webdash/package.json")) {
     version = require("webdash/package.json").version;
+  } else {
+    version = require(`${appRoot}/package.json`).version;
   }
 
   res.send({ appName, appPath, version });
