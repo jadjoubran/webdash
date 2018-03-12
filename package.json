@@ -1,6 +1,6 @@
 {
   "name": "webdash",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "license": "MIT",
   "scripts": {
     "sample": "echo \"hello world\"",
