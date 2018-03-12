@@ -126,9 +126,9 @@
             </div>
             <div id="options">
                 <paper-listbox slot="dropdown-content">
-                    <paper-item class="center-fix" on-click="" ink>Help &amp; Feedback</paper-item>
-                    <paper-item class="center-fix" on-click="">Github Repository</paper-item>
-                    <paper-item class="center-fix" on-click="">Create a Plugin</paper-item>
+                    <paper-item class="center-fix" on-click="helpFeedback" ink>Help &amp; Feedback</paper-item>
+                    <paper-item class="center-fix" on-click="openGithub">Github Repository</paper-item>
+                    <paper-item class="center-fix" on-click="createPlugin">Create a Plugin</paper-item>
                 </paper-listbox>
             </div>
         </div>
@@ -191,6 +191,18 @@
                 }, 180, mina.easein);
 
                 this.$.about.classList.remove('show');
+            }
+
+            createPlugin(){
+                window.open('https://github.com/jadjoubran/webdash')                
+            }
+
+            openGithub(){
+                window.open('https://github.com/jadjoubran/webdash')
+            }
+
+            helpFeedback(){
+                window.open('https://github.com/jadjoubran/webdash/issues/new')
             }
         }
 

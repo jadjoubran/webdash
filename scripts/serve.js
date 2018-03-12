@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
     res.sendFile(basePath + "/index.html", { root: __dirname })
 });
 
-app.listen(3000, () => {
-    console.log('Webdash running on port 3000!');
+const port = 3001;
+app.listen(port, () => {
+    console.log(`Webdash running on port ${port}!`);
 });

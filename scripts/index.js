@@ -4,7 +4,7 @@ const serveOptions = yargs => {
     yargs
         .positional('port', {
             describe: 'port to bind on',
-            default: 3000
+            default: 3001
         });
 }
 
