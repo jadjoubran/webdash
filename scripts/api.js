@@ -24,7 +24,15 @@ app.locals.config = getConfig();
 
 app.locals.appRoot = appRoot;
 
+if (!fs.existsSync(`${appRoot}/bower.json`)) {
+    console.log('No bower.json file.');
+    process.exit();
+}
 const bowerJson = require(`${appRoot}/bower.json`);
+if (!bowerJson.devDependencies) {
+    console.log('No devDependencies in bower.json.');
+    process.exit();
+}
 
 const plugins = getPlugins(bowerJson);
 

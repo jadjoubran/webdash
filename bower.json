@@ -18,7 +18,8 @@
     "paper-toast": "PolymerElements/paper-toast#^2.0.0",
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "Snap.svg": "snap.svg#^0.5.1",
-    "paper-ripple": "PolymerElements/paper-ripple#^2.1.0"
+    "paper-ripple": "PolymerElements/paper-ripple#^2.1.0",
+    "iron-icons": "PolymerElements/iron-icons#^2.1.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

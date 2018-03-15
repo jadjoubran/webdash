@@ -7,7 +7,6 @@ const app = express();
 const isLocal = process.argv.includes('--local');
 
 const basePath = isLocal ? '/../' : '/../build/es6-bundled';
-console.log(basePath);
 
 app.use('/api', api);
 
