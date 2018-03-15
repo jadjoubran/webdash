@@ -6,7 +6,6 @@
   "license": "MIT",
   "dependencies": {
     "app-route": "PolymerElements/app-route#^2.0.0",
-    "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^2.0.0",
     "iron-pages": "PolymerElements/iron-pages#^2.0.0",
     "paper-icon-button": "PolymerElements/paper-icon-button#^2.1.0",
     "polymer": "Polymer/polymer#^2.0.0",
@@ -23,14 +22,15 @@
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
-    "webdash": "^0.0.27"
+    "webdash": "^0.0.27",
+    "webdash-package-json": "^0.0.12",
+    "webdash-npm-scripts": "*"
   },
   "scripts": {
     "postinstall": "node ./scripts/install.js"
   },
   "resolutions": {
     "polymer": "^2.0.0",
-    "webcomponentsjs": "^1.0.0",
     "iron-selector": "^2.0.0",
     "iron-flex-layout": "^2.0.0"
   }
