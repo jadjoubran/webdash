@@ -57,10 +57,10 @@
         this.backend.get('plugins')
           .then(data => {
             const plugins = data.plugins;
-            if (!plugins || !plugins.length) {
+            this.plugins = plugins;
+            if (!this.plugins || !this.plugins.length) {
               return false;
             }
-            this.plugins = plugins;
 
             for (const plugin of plugins) {
               Polymer.importHref([`../bower_components/${plugin}/${plugin}.html`], () => {

@@ -11,7 +11,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
+                font-weight: bold;
                 padding: 9px 15px;
+                cursor: pointer;
             }
 
             svg {
@@ -19,7 +21,7 @@
             }
         </style>
 
-        <div id="add">
+        <div id="add" on-click="openDocs">
             <svg width="14" height="15" viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Canvas0" transform="translate(-431 -1444)">
                     <use xlink:href="#path0_fill" transform="translate(430 1443.8)" fill="#FFF" id="plus" />
@@ -37,6 +39,9 @@
         class AddPlugin extends Polymer.Element {
             static get is() { return 'add-plugin'; }
 
+            openDocs(){
+                window.open('https://github.com/jadjoubran/webdash/wiki/List-of-plugins', '_blank');
+            }
         }
 
         window.customElements.define(AddPlugin.is, AddPlugin);

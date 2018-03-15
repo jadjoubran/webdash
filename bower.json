@@ -22,10 +22,7 @@
     "iron-icons": "PolymerElements/iron-icons#^2.1.1"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
-    "webdash": "^0.0.27",
-    "webdash-package-json": "^0.0.12",
-    "webdash-npm-scripts": "*"
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0"
   },
   "scripts": {
     "postinstall": "node ./scripts/install.js"
@@ -33,6 +30,7 @@
   "resolutions": {
     "polymer": "^2.0.0",
     "iron-selector": "^2.0.0",
-    "iron-flex-layout": "^2.0.0"
+    "iron-flex-layout": "^2.0.0",
+    "webcomponentsjs": "^1.0.0"
   }
 }
