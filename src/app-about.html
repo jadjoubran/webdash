@@ -161,7 +161,7 @@
                 this.help = Snap(this.$.help);
                 this.version = '';
                 window.addEventListener('webdash-info', e => {
-                    if (e.detail && e.detail.version){
+                    if (e.detail && e.detail.version) {
                         this.version = `V${e.detail.version}`;
                     }
                 });
@@ -193,15 +193,15 @@
                 this.$.about.classList.remove('show');
             }
 
-            createPlugin(){
+            createPlugin() {
                 window.open('https://github.com/jadjoubran/webdash')
             }
 
-            openGithub(){
+            openGithub() {
                 window.open('https://github.com/jadjoubran/webdash')
             }
 
-            helpFeedback(){
+            helpFeedback() {
                 window.open('https://github.com/jadjoubran/webdash/issues/new')
             }
         }

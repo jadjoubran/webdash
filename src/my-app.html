@@ -9,7 +9,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
@@ -17,8 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="app-header.html">
 <link rel="import" href="app-about.html">
 
-<link rel="lazy-import" href="web-dash.html">
-<link rel="lazy-import" href="view-404.html">
+<link rel="import" href="web-dash.html">
 
 <dom-module id="my-app">
   <template>
@@ -65,10 +63,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </iron-pages>
 
     <app-about></app-about>
-
   </template>
 
   <script>
+    // Gesture events like tap and track generated from touch will not be
+    // preventable, allowing for better scrolling performance.
+    Polymer.setPassiveTouchGestures(true);
+
     class MyApp extends Polymer.Element {
       static get is() { return 'my-app'; }
 
@@ -80,7 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             observer: '_pageChanged',
           },
           routeData: Object,
-          subroute: String,
+          subroute: Object,
           rootPath: String,
         };
       }
@@ -91,22 +92,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         ];
       }
 
-      ready() {
-        super.ready();
-
-        this.backend = new Backend('webdash');
-
-        this._getInfo();
-        this._getConfig();
-      }
-
       _routePageChanged(page) {
+        // If no page was found in the route data, page will be an empty string.
+        // Default to 'view1' in that case.
         this.page = page || 'web-dash';
       }
 
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl(page + '.html');
+        const resolvedPageUrl = this.resolveUrl(page + '.html');
         Polymer.importHref(
           resolvedPageUrl,
           null,
@@ -118,13 +112,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.page = 'view-404';
       }
 
+      ready() {
+        super.ready();
+
+        this.backend = new Backend('webdash');
+
+        this._getInfo();
+        this._getConfig();
+      }
+
       _getInfo() {
         this.backend.get('info')
           .then(data => {
             this.appName = data.appName;
             this.appPath = data.appPath;
             this.version = data.version;
-             window.dispatchEvent(new CustomEvent('webdash-info', {
+            window.dispatchEvent(new CustomEvent('webdash-info', {
               detail: data
             }))
           });

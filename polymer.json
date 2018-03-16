@@ -6,12 +6,14 @@
     "src/view-404.html"
   ],
   "sources": [
-    "src/**/*",
-    "images/**/*"
+    "images/**/*",
+    "src/**/*"
   ],
   "extraDependencies": [
     "utils/*.js",
-    "bower_components/webcomponentsjs/*.js"
+    "bower_components/webcomponentsjs/*.js",
+    "!bower_components/webcomponentsjs/gulpfile.js",
+    "manifest.json"
   ],
   "lint": {
     "rules": ["polymer-2"]

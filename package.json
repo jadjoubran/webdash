@@ -2,6 +2,25 @@
   "name": "webdash",
   "version": "0.1.4",
   "license": "MIT",
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "bricks.js": "^1.8.0",
+    "chalk": "^2.3.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "lodash": "^4.17.0",
+    "pkg-dir": "^2.0.0",
+    "serve-static": "^1.13.2",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.0",
+    "eslint-plugin-html": "^2.0.0",
+    "@types/node": "^9.4.6",
+    "concurrently": "^3.5.1",
+    "resize-observer-polyfill": "^1.5.0"
+  },
   "scripts": {
     "sample": "echo \"hello world\"",
     "multiline": "echo \"this is\nawesome\"",
@@ -20,23 +39,5 @@
   ],
   "bin": {
     "webdash": "./scripts/index.js"
-  },
-  "dependencies": {
-    "app-root-path": "^2.0.1",
-    "bricks.js": "^1.8.0",
-    "chalk": "^2.3.2",
-    "cors": "^2.8.4",
-    "express": "^4.16.3",
-    "lodash": "^4.17.0",
-    "pkg-dir": "^2.0.0",
-    "serve-static": "^1.13.2",
-    "yargs": "^11.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^9.4.6",
-    "concurrently": "^3.5.1",
-    "eslint": "^3.19.0",
-    "eslint-plugin-html": "^2.0.0",
-    "resize-observer-polyfill": "^1.5.0"
   }
 }
