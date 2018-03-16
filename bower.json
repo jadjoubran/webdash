@@ -28,9 +28,6 @@
     "postinstall": "node ./scripts/install.js"
   },
   "resolutions": {
-    "polymer": "^2.0.0",
-    "iron-selector": "^2.0.0",
-    "iron-flex-layout": "^2.0.0",
-    "webcomponentsjs": "^1.0.0"
+    "polymer": "^2.0.0"
   }
 }
