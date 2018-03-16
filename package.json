@@ -15,7 +15,8 @@
     "test:integration": "polymer build"
   },
   "files": [
-    "*"
+    "*",
+    "!bower_components/"
   ],
   "bin": {
     "webdash": "./scripts/index.js"
