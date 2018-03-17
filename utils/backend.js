@@ -8,11 +8,15 @@ class Backend {
             pluginName = pluginName.replace(/^webdash\-/, '');
         }
 
-        this._baseUrl = `http://localhost:3001/api/${pluginName}/`;
+        this._baseUrl = `http://localhost:${this._getPort()}/api/${pluginName}/`;
         this._defaultHeaders = {
             'Content-Type': 'application/json'
         };
         this._defaultBody = {};
+    }
+
+    _getPort() {
+      return window.location.port;
     }
 
     getBaseUrl() {
