@@ -2,6 +2,6 @@
     "src": "./src/",
     "dist": "./dist/",
     "jsBudgetLimit": 200,
-    "jsBudgetPath": "./dist/*.min.js",
+    "jsBudgetPath": "./dist/*.js",
     "manifestPath": "./src/manifest.json"
 }
