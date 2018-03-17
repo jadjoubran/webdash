@@ -27,7 +27,7 @@
     "dev": "concurrently \"polymer serve\" \"node serve.js\"",
     "start": "concurrently \"polymer serve build/es6-bundled\" \"node api.js\"",
     "postinstall": "node ./scripts/install.js",
-    "prepublishOnly": "polymer build",
+    "prepublishOnly": "polymer build --base-path /",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
