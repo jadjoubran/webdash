@@ -3,5 +3,8 @@
   "dist": "./build/es6-bundled/",
   "jsBudgetLimit": 300,
   "jsBudgetPath": "./build/default/src/*.html",
-  "manifestPath": "./images/favicons/manifest.json"
+  "manifestPath": "./images/favicons/manifest.json",
+  "readableAssets": {
+    "./images/": "/images/"
+  }
 }

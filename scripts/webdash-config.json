@@ -3,5 +3,8 @@
     "dist": "./dist/",
     "jsBudgetLimit": 200,
     "jsBudgetPath": "./dist/*.js",
-    "manifestPath": "./src/manifest.json"
+    "manifestPath": "./src/manifest.json",
+    "readableAssets": {
+      "./src/assets/": "/assets/"
+    }
 }
