@@ -19,8 +19,12 @@
     "rules": ["polymer-2"]
   },
   "builds": [
-    {
-      "preset": "es6-bundled"
-    }
+  {
+    "name": "default",
+    "bundle": false,
+    "js": {"minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true}
+  }
   ]
 }
