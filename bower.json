@@ -1,6 +1,8 @@
 {
   "name": "webdash",
-  "authors": ["Jad Joubran"],
+  "authors": [
+    "Jad Joubran"
+  ],
   "license": "MIT",
   "dependencies": {
     "app-route": "PolymerElements/app-route#^2.0.0",
@@ -23,7 +25,8 @@
     "polymer": "^2.0.0"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester#^6.0.0"
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webdash-performance-budget": "^1.0.13"
   },
   "scripts": {
     "postinstall": "node ./scripts/install.js"
