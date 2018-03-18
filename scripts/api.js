@@ -3,11 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 
-let appRoot = require("app-root-path").toString();
-let npmLinkMode = process.argv.find(arg => arg.startsWith("--project="));
-if (npmLinkMode) {
-  appRoot = npmLinkMode.substr("--project=".length);
-}
+const appRoot = require('./approot');
 
 const app = express();
 app.use(cors());
