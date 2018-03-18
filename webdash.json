@@ -1,10 +1,10 @@
 {
-  "src": "./src/",
-  "dist": "./build/default/",
-  "jsBudgetLimit": 300,
-  "jsBudgetPath": "./build/default/src/*.html",
-  "manifestPath": "./images/favicons/manifest.json",
-  "readableAssets": {
-    "./images/": "/images/"
-  }
+    "src": "./src/",
+    "dist": "./build/",
+    "jsBudgetLimit": 200,
+    "jsBudgetPath": "./build/default/utils/*.js",
+    "manifestPath": "./build/default/manifest.json",
+    "readableAssets": {
+        "./src/assets/": "/assets/"
+    }
 }
