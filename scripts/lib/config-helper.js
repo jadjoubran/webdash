@@ -1,6 +1,6 @@
 const fs = require("fs");
 const FileHound = require("filehound");
-const appRoot = require("app-root-path").toString();
+const appRoot = require("./../app-root");
 
 
 const fileExists = file => {
@@ -31,7 +31,7 @@ if (fileExists("dist")) {
 const jsFiles = FileHound.create()
   .ignoreHiddenDirectories()
   .ignoreHiddenFiles()
-  .paths(dist)
+  .path(`${appRoot}/${dist}`)
   .ext("js")
   .depth(1)
   .findSync();

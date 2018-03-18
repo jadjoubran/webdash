@@ -3,7 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 
-const appRoot = require('./approot');
+const appRoot = require('./app-root');
 
 const app = express();
 app.use(cors());

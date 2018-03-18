@@ -1,6 +1,6 @@
 const fs = require("fs");
 const ora = require("ora");
-const appRoot = require("app-root-path").toString();
+const appRoot = require("./app-root");
 const configHelper = require('./lib/config-helper');
 
 
