@@ -20,20 +20,20 @@ app.locals.config = getConfig();
 
 app.locals.appRoot = appRoot;
 
-if (!fs.existsSync(`${appRoot}/bower.json`)) {
-    console.log('No bower.json file.');
+if (!fs.existsSync(`${appRoot}/package.json`)) {
+    console.log('No package.json file.');
     process.exit();
 }
-const bowerJson = require(`${appRoot}/bower.json`);
-if (!bowerJson.devDependencies) {
-    console.log('No devDependencies in bower.json.');
+const packageJson = require(`${appRoot}/package.json`);
+if (!packageJson.devDependencies) {
+    console.log('No devDependencies in package.json.');
     process.exit();
 }
 
-const plugins = getPlugins(bowerJson);
+const plugins = getPlugins(packageJson);
 
 for (const plugin of plugins) {
-  const apiPath = `${appRoot}/bower_components/${plugin}/api.js`;
+  const apiPath = `${appRoot}/node_modules/${plugin}/api.js`;
   if (!fs.existsSync(apiPath)) {
     continue;
   }
@@ -58,7 +58,6 @@ for (const plugin of plugins) {
 }
 
 app.get("/webdash/info", (req, res) => {
-  const packageJson = require(`${appRoot}/package.json`);
   let appName = packageJson.name;
   if (!appName) {
     //fallback to folder name
@@ -86,7 +85,7 @@ app.get("/webdash/config", (req, res) => {
 });
 
 app.get("/webdash/plugins", (req, res) => {
-  const plugins = getPlugins(bowerJson);
+  const plugins = getPlugins(packageJson);
 
   res.send({ plugins });
 });
@@ -97,11 +96,11 @@ app.get("*", function(req, res) {
   res.sendFile("index.html", { root: "." });
 });
 
-function getPlugins(bowerJson) {
-  if (!bowerJson) {
+function getPlugins(packageJson) {
+  if (!packageJson) {
     return [];
   }
-  const deps = Object.keys(bowerJson.devDependencies);
+  const deps = Object.keys(packageJson.devDependencies);
   if (!deps) {
     return [];
   }

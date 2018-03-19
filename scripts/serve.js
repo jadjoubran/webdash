@@ -10,7 +10,8 @@ const appRoot = require('./app-root');
 
 app.use('/api', api);
 app.use(express.static(__dirname + basePath));
-app.use('/bower_components', express.static('./bower_components/'));
+app.use("/node_modules", express.static("./node_modules/"));
+app.use('/bower_components', express.static('./node_modules/webdash/bower_components/'));
 
 if (fs.existsSync(`${appRoot}/webdash.json`)) {
     const webdashConfig = require(`${appRoot}/webdash.json`);
