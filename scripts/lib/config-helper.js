@@ -28,7 +28,8 @@ if (fileExists("dist")) {
   dist = "./build_production";
 }
 
-const jsFiles = FileHound.create()
+try {
+  const jsFiles = FileHound.create()
   .ignoreHiddenDirectories()
   .ignoreHiddenFiles()
   .path(`${appRoot}/${dist}`)
@@ -36,14 +37,18 @@ const jsFiles = FileHound.create()
   .depth(1)
   .findSync();
 
-if (jsFiles.length) {
-  let path = jsFiles[0];
-  path = path.replace(`${appRoot}/`, "");
-  jsBudgetPath =
+  if (jsFiles.length) {
+    let path = jsFiles[0];
+    path = path.replace(`${appRoot}/`, "");
+    jsBudgetPath =
     "./" + path.substr(0, path.lastIndexOf("/")) + "/*.js";
+  }
+}catch (error){
+
 }
 
-const manifestFiles = FileHound.create()
+try {
+  const manifestFiles = FileHound.create()
   .ignoreHiddenDirectories()
   .ignoreHiddenFiles()
   .path(appRoot)
@@ -51,10 +56,10 @@ const manifestFiles = FileHound.create()
   .match("manifest.json")
   .depth(3)
   .findSync();
-if (manifestFiles.length) {
-  manifestPath = "./" + manifestFiles[0].replace(`${appRoot}/`, '');
-} else {
-  const webManifestFiles = FileHound.create()
+  if (manifestFiles.length) {
+    manifestPath = "./" + manifestFiles[0].replace(`${appRoot}/`, '');
+  } else {
+    const webManifestFiles = FileHound.create()
     .ignoreHiddenDirectories()
     .ignoreHiddenFiles()
     .path(appRoot)
@@ -62,9 +67,12 @@ if (manifestFiles.length) {
     .match("site.webmanifest")
     .depth(3)
     .findSync();
-  if (webManifestFiles.length) {
-    manifestPath = "./" + webManifestFiles[0].replace(`${appRoot}/`, "");
+    if (webManifestFiles.length) {
+      manifestPath = "./" + webManifestFiles[0].replace(`${appRoot}/`, "");
+    }
   }
+}catch (err){
+
 }
 
 module.exports = {
