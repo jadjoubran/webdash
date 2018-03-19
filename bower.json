@@ -25,8 +25,7 @@
     "polymer": "^2.0.0"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
-    "webdash-performance-budget": "^1.0.13"
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0"
   },
   "scripts": {
     "postinstall": "node ./scripts/install.js"

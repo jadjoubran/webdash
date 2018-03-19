@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const getPlugins = require("./lib/get-plugins");
 
 const appRoot = require('./app-root');
 
@@ -95,17 +96,5 @@ app.use(express.static(__dirname + "/build/es6-bundled"));
 app.get("*", function(req, res) {
   res.sendFile("index.html", { root: "." });
 });
-
-function getPlugins(packageJson) {
-  if (!packageJson) {
-    return [];
-  }
-  const deps = Object.keys(packageJson.devDependencies);
-  if (!deps) {
-    return [];
-  }
-
-  return deps.filter(dep => dep.startsWith("webdash-"));
-}
 
 module.exports = app;
