@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const chalk = require('chalk');
 
 const serveOptions = yargs => {
   yargs
@@ -12,7 +13,9 @@ const serveCommand = argv => {
   const app = require('./serve.js');
   const port = argv.port;
   app.listen(port, () => {
-    console.log(`Webdash running on port ${port}!`);
+    const url = chalk.underline(`http://localhost:${port}`);
+    const message = chalk.keyword('green').bold(`Webdash running on port ${url}!`);
+    console.log(message);
   });
 };
 
