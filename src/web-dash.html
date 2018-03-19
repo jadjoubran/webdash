@@ -71,7 +71,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             for (const plugin of plugins) {
-              Polymer.importHref([`../bower_components/${plugin}/${plugin}.html`], () => {
+              Polymer.importHref([`/node_modules/${plugin}/${plugin}.html`], () => {
                 const wrapper = document.createElement('plugin-wrapper');
                 wrapper.setAttribute('name', plugin);
                 wrapper.classList.add('plugin');
