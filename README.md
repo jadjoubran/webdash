@@ -11,3 +11,7 @@ npm install -g polymer-cli
 polymer init polymer-2-element
 touch api.js
 ```
+
+# Enjoying Webdash?
+
+Follow [@JoubranJad](https://twitter.com/JoubranJad)
