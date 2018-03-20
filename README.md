@@ -1,6 +1,6 @@
 # Webdash
 
-![webdash screenshot](https://i.imgur.com/nYYcLr7.png)
+![webdash screenshot](https://i.imgur.com/FFQuEpQ.jpg)
 
 # Create a plugin
 
