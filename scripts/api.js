@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const getPlugins = require("./lib/get-plugins");
 
-const appRoot = require('./app-root');
+const appRoot = require("./app-root");
 
 const app = express();
 app.use(cors());
@@ -22,13 +22,13 @@ app.locals.config = getConfig();
 app.locals.appRoot = appRoot;
 
 if (!fs.existsSync(`${appRoot}/package.json`)) {
-    console.log('No package.json file.');
-    process.exit();
+  console.log("No package.json file.");
+  process.exit();
 }
 const packageJson = require(`${appRoot}/package.json`);
 if (!packageJson.devDependencies) {
-    console.log('No devDependencies in package.json.');
-    process.exit();
+  console.log("No devDependencies in package.json.");
+  process.exit();
 }
 
 const plugins = getPlugins(packageJson);
@@ -67,8 +67,10 @@ app.get("/webdash/info", (req, res) => {
   const appPath = appRoot;
   let version = "";
 
-  if (fs.existsSync("webdash/package.json")) {
-    version = require("webdash/package.json").version;
+  const webdashPackageJson = `${appRoot}/node_modules/webdash/package.json`;
+
+  if (fs.existsSync(webdashPackageJson)) {
+    version = require(webdashPackageJson).version;
   } else {
     version = require(`${appRoot}/package.json`).version;
   }
