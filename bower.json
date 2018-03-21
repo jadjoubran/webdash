@@ -5,8 +5,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "app-route": "PolymerElements/app-route#^2.0.0",
-    "iron-pages": "PolymerElements/iron-pages#^2.0.0",
     "paper-icon-button": "PolymerElements/paper-icon-button#^2.0.0",
     "polymer": "Polymer/polymer#^2.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",

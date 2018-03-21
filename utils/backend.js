@@ -61,8 +61,8 @@ class Backend {
         endpoint = this.handleLeadingSlash(endpoint);
         const response = await fetch(this.getBaseUrl() + endpoint, {
             method,
-            headers: { ...this.getDefaultHeaders(), ...headers },
-            body: JSON.stringify({ ...this.getDefaultBody(), ...body })
+            headers: Object.assign(this.getDefaultHeaders(), headers),
+            body: JSON.stringify(Object.assign(this.getDefaultBody(), body))
         })
         return await response.json();
     }

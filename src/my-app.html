@@ -9,9 +9,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
-<link rel="import" href="/bower_components/app-route/app-location.html">
-<link rel="import" href="/bower_components/app-route/app-route.html">
-<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="app-header.html">
 <link rel="import" href="app-about.html">
@@ -48,21 +45,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
-    </app-location>
-
     <app-header app-name="{{appName}}" app-path="{{appPath}}"></app-header>
 
-    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
-    </app-route>
-
-
-    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
-      <web-dash name="web-dash"></web-dash>
-      <view-404 name="view-404"></view-404>
-    </iron-pages>
+    <web-dash></web-dash>
 
     <app-about></app-about>
+
   </template>
 
   <script>
@@ -75,41 +63,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get properties() {
         return {
-          page: {
-            type: String,
-            reflectToAttribute: true,
-            observer: '_pageChanged',
-          },
-          routeData: Object,
-          subroute: Object,
           rootPath: String,
         };
-      }
-
-      static get observers() {
-        return [
-          '_routePageChanged(routeData.page)',
-        ];
-      }
-
-      _routePageChanged(page) {
-        // If no page was found in the route data, page will be an empty string.
-        // Default to 'view1' in that case.
-        this.page = page || 'web-dash';
-      }
-
-      _pageChanged(page) {
-        // Load page import on demand. Show 404 page if fails
-        const resolvedPageUrl = this.resolveUrl(page + '.html');
-        Polymer.importHref(
-          resolvedPageUrl,
-          null,
-          this._showPage404.bind(this),
-          true);
-      }
-
-      _showPage404() {
-        this.page = 'view-404';
       }
 
       ready() {
