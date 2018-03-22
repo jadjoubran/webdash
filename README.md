@@ -2,6 +2,11 @@
 
 ![webdash screenshot](https://i.imgur.com/FFQuEpQ.jpg)
 
+# Documentation
+
+Checkout the [documentation](https://github.com/jadjoubran/webdash/wiki) which includes:
+
+
 # Create a plugin
 
 Keep in mind that the element's name must start with `webdash-`
