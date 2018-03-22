@@ -19,4 +19,4 @@ touch api.js
 
 # Enjoying Webdash?
 
-Follow [@JoubranJad](https://twitter.com/JoubranJad)
+Say hi! [@JoubranJad](https://twitter.com/JoubranJad)
