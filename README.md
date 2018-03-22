@@ -4,7 +4,7 @@
 
 # Documentation
 
-Checkout the [documentation](https://github.com/jadjoubran/webdash/wiki) which includes:
+Checkout the [documentation](https://github.com/jadjoubran/webdash/wiki).
 
 
 # Create a plugin
