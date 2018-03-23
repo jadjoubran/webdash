@@ -38,5 +38,6 @@
   },
   "bin": {
     "webdash": "./scripts/index.js"
-  }
+  },
+  "repository": "https://github.com/jadjoubran/webdash"
 }
