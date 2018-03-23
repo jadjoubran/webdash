@@ -39,5 +39,6 @@
   "bin": {
     "webdash": "./scripts/index.js"
   },
-  "repository": "https://github.com/jadjoubran/webdash"
+  "repository": "https://github.com/jadjoubran/webdash",
+  "homepage": "https://webdash.xyz"
 }
