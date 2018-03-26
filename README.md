@@ -7,6 +7,8 @@
 
 # Documentation
 
+> Webdash requires Node >= 8
+
 Checkout the [documentation](https://github.com/jadjoubran/webdash/wiki).
 
 
