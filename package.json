@@ -1,6 +1,6 @@
 {
   "name": "webdash",
-  "version": "1.0.0",
+  "version": "1.0.1-0",
   "license": "MIT",
   "dependencies": {
     "app-root-path": "^2.0.1",
@@ -39,8 +39,8 @@
   "bin": {
     "webdash": "./scripts/index.js"
   },
-  "engines" : {
-    "node" : ">=8.0.0"
+  "engines": {
+    "node": ">=8.0.0"
   },
   "repository": "https://github.com/jadjoubran/webdash",
   "homepage": "https://webdash.xyz"
