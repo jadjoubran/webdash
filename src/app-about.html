@@ -7,10 +7,6 @@
 <dom-module id="app-about">
     <template>
         <style>
-            :host {
-              /*bigger than plugin-wrapper's z-index*/
-              z-index: 10000;
-            }
             #fab {
                 position: fixed;
                 bottom: 20px;
@@ -30,6 +26,8 @@
             }
 
             #about {
+                /*bigger than plugin-wrapper's z-index*/
+                z-index: 10000;
                 position: fixed;
                 background-color: white;
                 bottom: 72px;
