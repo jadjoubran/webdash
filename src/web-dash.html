@@ -21,8 +21,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       #plugins {
-        margin-left: 80px;
-        margin-right: 80px;
+        --space: 80px;
+        margin-left: var(--space);
+        margin-right: var(--space);
         margin-top: 30px;
         margin-bottom: 50px;
         width: auto !important;
@@ -38,8 +39,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       @media screen and (max-width: 800px) {
+        #plugins{
+          --space: 30px;
+        }
         .plugin {
-          width: calc(100vw - 175px);
+          width: calc(100vw - 75px);
         }
       }
     </style>
