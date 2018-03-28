@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 const chalk = require('chalk');
 
+require('./checks');
+
 const serveOptions = yargs => {
   yargs
   .positional('port', {
