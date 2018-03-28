@@ -19,7 +19,7 @@ const serveCommand = argv => {
   const host = argv.host;
   app.listen(port, host, () => {
     const url = chalk.underline(`http://${host}:${port}`);
-    const message = chalk.keyword('green').bold(`Webdash running on port ${url}!`);
+    const message = chalk.keyword('green').bold(`Webdash running on ${url}!`);
     console.log(message);
   });
 };
