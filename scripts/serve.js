@@ -14,7 +14,7 @@ app.use(express.static(__dirname + basePath));
 app.use("/node_modules", express.static("./node_modules/"));
 app.use(
   "/bower_components",
-  express.static("./node_modules/webdash/bower_components/")
+  express.static(__dirname + "/../bower_components/")
 );
 
 const packageJson = require(`${appRoot}/package.json`);
