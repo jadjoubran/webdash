@@ -29,4 +29,6 @@ const serveCommand = argv => {
 require('yargs') // eslint-disable-line
 .command('serve [--port] [--host]', 'start webdash server', serveOptions, serveCommand)
 .command('$0', 'the default command', serveOptions, serveCommand)
+.version()
+.alias('version', 'v')
 .argv
