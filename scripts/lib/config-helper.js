@@ -11,6 +11,7 @@ let src = "./src/";
 let dist = "./dist/";
 let jsBudgetPath = `${dist}*.js`;
 let manifestPath = `${src}manifest.json`;
+const serverScripts = ["start", "dev", "serve", "server", "watch"];
 
 if (fileExists("src")) {
   src = "./src/";
@@ -79,5 +80,6 @@ module.exports = {
   src,
   dist,
   jsBudgetPath,
-  manifestPath
+  manifestPath,
+  serverScripts
 };
