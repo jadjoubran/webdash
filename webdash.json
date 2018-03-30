@@ -6,5 +6,12 @@
     "manifestPath": "./build/default/manifest.json",
     "readableAssets": {
         "./src/assets/": "/assets/"
-    }
+    },
+    "serverScripts": [
+        "start",
+        "dev",
+        "serve",
+        "server",
+        "watch"
+    ]
 }
