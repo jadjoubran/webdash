@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const chalk = require('chalk');
-
+const opn = require('opn')
 require('./checks');
 
 const serveOptions = yargs => {
@@ -23,6 +23,7 @@ const serveCommand = argv => {
     const url = chalk.underline(`http://${host}:${port}`);
     const message = chalk.keyword('green').bold(`Webdash running on ${url}!`);
     console.log(message);
+    opn(url)
   });
 };
 
