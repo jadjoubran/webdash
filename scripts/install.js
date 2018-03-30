@@ -17,7 +17,8 @@ const webdashConfig = {
   manifestPath: configHelper.manifestPath,
   readableAssets: {
     "./src/assets/": "/assets/"
-  }
+  },
+  serverScripts: configHelper.serverScripts
 };
 
 const writeConfig = () => {
