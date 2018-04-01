@@ -25,7 +25,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/2265232?v=4" width="75px;"/><br /><sub><b>Jad Joubran</b></sub>](https://www.youtube.com/jadjoubran)<br />[📝](#blog-jadjoubran "Blogposts") |
+| [<img src="https://avatars2.githubusercontent.com/u/2265232?v=4" width="75px;"/><br /><sub><b>Jad Joubran</b></sub>](https://www.youtube.com/jadjoubran)<br />[📝](#blog-jadjoubran "Blogposts") [💻](https://github.com/jadjoubran/webdash/commits?author=jadjoubran "Code") |
 | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
