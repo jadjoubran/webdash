@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const chalk = require('chalk');
-
+const opn = require('opn')
 require('./checks');
 
 const serveOptions = yargs => {
@@ -20,9 +20,16 @@ const serveCommand = argv => {
   const port = argv.port;
   const host = argv.host;
   app.listen(port, host, () => {
-    const url = chalk.underline(`http://${host}:${port}`);
+    const webdashServingAddress = `http://${host}:${port}`
+    const url = chalk.underline(webdashServingAddress);
     const message = chalk.keyword('green').bold(`Webdash running on ${url}!`);
     console.log(message);
+
+    try {
+      opn(webdashServingAddress);
+    } catch(error) {
+      console.log('failed to open browser for webdash url')
+    }
   });
 };
 
