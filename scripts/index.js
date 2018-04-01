@@ -20,15 +20,15 @@ const serveCommand = argv => {
   const port = argv.port;
   const host = argv.host;
   app.listen(port, host, () => {
-    const webdashServingAddress = `http://${host}:${port}`
-    const url = chalk.underline(webdashServingAddress);
-    const message = chalk.keyword('green').bold(`Webdash running on ${url}!`);
+    const url = `http://${host}:${port}`
+    const formattedUrl = chalk.underline(url);
+    const message = chalk.keyword('green').bold(`Webdash running on ${formattedUrl}!`);
     console.log(message);
 
     try {
-      opn(webdashServingAddress);
+      opn(url);
     } catch(error) {
-      console.log('failed to open browser for webdash url')
+      //couldn't serve webdash, no big deal: end-users can open it manually
     }
   });
 };
