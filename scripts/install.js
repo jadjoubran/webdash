@@ -8,6 +8,8 @@ const spinner = ora(
   "Tailoring webdash for you. Saving configuration in webdash.json"
 ).start();
 
+//isGlobal in ./app-root will return true when running `npm install --save-dev webdash`
+const configPath = `${appRoot}/../../webdash.json`;
 
 const webdashConfig = {
   src: configHelper.src,
@@ -23,7 +25,7 @@ const webdashConfig = {
 
 const writeConfig = () => {
   fs.writeFile(
-    `${appRoot}/webdash.json`,
+    configPath,
     JSON.stringify(webdashConfig, null, 4),
     err => {
       if (err) return console.error(err);
@@ -33,7 +35,7 @@ const writeConfig = () => {
   );
 };
 
-if (!fs.existsSync(`${appRoot}/webdash.json`)) {
+if (!fs.existsSync(configPath)) {
   writeConfig();
 }
 spinner.stop();
