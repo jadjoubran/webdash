@@ -39,6 +39,15 @@
         "code",
         "ideas"
       ]
+    },
+    {
+      "login": "fridzema",
+      "name": "Robert Fridzema",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/8180660?v=4",
+      "profile": "https://fridzema.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
