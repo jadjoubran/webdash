@@ -32,7 +32,7 @@
     "dev": "concurrently \"polymer serve\" \"node serve.js\"",
     "start": "concurrently \"polymer serve build/default\" \"node api.js\"",
     "postinstall": "node ./scripts/install.js",
-    "prepublishOnly": "polymer build",
+    "prepublishOnly": "npx all-contributors check && polymer build",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
