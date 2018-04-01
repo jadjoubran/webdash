@@ -1,5 +1,5 @@
 # Webdash
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 Webdash is a web dashboard that helps you visualize, monitor & manage your web project using community-driven plugins
 
@@ -25,6 +25,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
+| [<img src="https://avatars2.githubusercontent.com/u/2265232?v=4" width="75px;"/><br /><sub><b>Jad Joubran</b></sub>](https://www.youtube.com/jadjoubran)<br />[📝](#blog-jadjoubran "Blogposts") |
+| :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
