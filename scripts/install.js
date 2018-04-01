@@ -8,8 +8,7 @@ const spinner = ora(
   "Tailoring webdash for you. Saving configuration in webdash.json"
 ).start();
 
-//isGlobal in ./app-root will return true when running `npm install --save-dev webdash`
-const configPath = `${appRoot}/../../webdash.json`;
+const configPath = `${appRoot}/webdash.json`;
 
 const webdashConfig = {
   src: configHelper.src,
