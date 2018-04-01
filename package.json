@@ -22,14 +22,13 @@
   },
   "devDependencies": {
     "@types/node": "^9.4.6",
+    "all-contributors-cli": "^4.11.1",
     "concurrently": "^3.5.1",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.0",
     "eslint-plugin-html": "^2.0.0"
   },
   "scripts": {
-    "sample": "echo \"hello world\"",
-    "multiline": "echo \"this is\nawesome\"",
     "dev": "concurrently \"polymer serve\" \"node serve.js\"",
     "start": "concurrently \"polymer serve build/default\" \"node api.js\"",
     "postinstall": "node ./scripts/install.js",
@@ -37,7 +36,9 @@
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
-    "test:integration": "polymer build"
+    "test:integration": "polymer build",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "bin": {
     "webdash": "./scripts/index.js"
