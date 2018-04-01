@@ -52,6 +52,7 @@
             }
 
             paper-item {
+                cursor: pointer;
                 --paper-item-selected-weight: normal;
             }
 
@@ -83,6 +84,7 @@
             <paper-menu-button vertical-align="top" horizontal-align="right">
                 <paper-icon-button class="more" icon="more-vert" slot="dropdown-trigger" alt="menu"></paper-icon-button>
                 <paper-listbox slot="dropdown-content">
+                    <paper-item class="center-fix" on-click="reloadPlugin">Reload</paper-item>
                     <paper-item class="center-fix" on-click="showDocumentation">Documentation</paper-item>
                     <paper-item class="center-fix" on-click="showDelete">Delete</paper-item>
                 </paper-listbox>
@@ -120,6 +122,14 @@
                 name = name.replace('webdash-', '');
                 name = name.replace(/\-/, ' ');
                 return name;
+            }
+
+            reloadPlugin(){
+                const html = this.innerHTML;
+                this.innerHTML = '';
+                requestAnimationFrame(() => {
+                    this.innerHTML = html;
+                });
             }
 
             showDocumentation() {
