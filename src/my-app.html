@@ -82,6 +82,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.appName = data.appName;
             this.appPath = data.appPath;
             this.version = data.version;
+            if (window.gtag){
+              gtag('event', 'version', {
+                'event_category': 'webdash-core',
+                'event_label': 'Webadsh version',
+                'value': this.version,
+              });
+            }
             window.dispatchEvent(new CustomEvent('webdash-info', {
               detail: data
             }))
