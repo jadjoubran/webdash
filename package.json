@@ -26,13 +26,14 @@
     "concurrently": "^3.5.1",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.0",
-    "eslint-plugin-html": "^2.0.0"
+    "eslint-plugin-html": "^2.0.0",
+    "workbox-cli": "^3.0.1"
   },
   "scripts": {
-    "dev": "concurrently \"polymer serve\" \"node serve.js\"",
-    "start": "concurrently \"polymer serve build/default\" \"node api.js\"",
+    "dev": "concurrently \"polymer serve\" \"node ./scripts/index.js --local\"",
+    "start": "concurrently \"polymer serve build/default\" \"node ./scripts/index.js --local\"",
     "postinstall": "node ./scripts/install.js",
-    "prepublishOnly": "npx all-contributors check && polymer build",
+    "prepublishOnly": "npx all-contributors check && polymer build && workbox generateSW",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
