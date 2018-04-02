@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
 <link rel="import" href="app-header.html">
 <link rel="import" href="app-about.html">
 
@@ -43,6 +44,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-top: 0;
         color: rgba(255, 255, 255, 0.5);
       }
+
+      .toast-button {
+        color: white;
+        font-weight: bold;
+      }
+
+      paper-toast {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
     </style>
 
     <app-header app-name="{{appName}}" app-path="{{appPath}}"></app-header>
@@ -50,6 +62,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <web-dash></web-dash>
 
     <app-about></app-about>
+
+    <paper-toast duration="6000" id="toast">
+      <paper-button class="toast-button" on-click="_reload">Reload</paper-button>
+    </paper-toast>
 
   </template>
 
@@ -72,8 +88,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         this.backend = new Backend('webdash');
 
+        this._registerServiceWorker();
         this._getInfo();
         this._getConfig();
+      }
+
+      _reload() {
+        requestAnimationFrame(() => {
+          window.location.reload();
+        });
       }
 
       _getInfo() {
@@ -82,7 +105,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.appName = data.appName;
             this.appPath = data.appPath;
             this.version = data.version;
-            if (window.gtag){
+            if (window.gtag) {
               gtag('event', 'version', {
                 'event_category': 'webdash-core',
                 'event_label': 'Webadsh version',
@@ -100,6 +123,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           .then(data => {
             window.webdashConfig = data.config;
           })
+      }
+
+      _registerServiceWorker() {
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js', {
+              scope: Polymer.rootPath,
+            })
+              .then(reg => {
+                reg.onupdatefound = () => {
+                  const installingWorker = reg.installing;
+
+                  installingWorker.onstatechange = () => {
+                    switch (installingWorker.state) {
+                      case 'installed':
+                        if (navigator.serviceWorker.controller) {
+                          const toast = this.$.toast;
+                          toast.text = 'New version available';
+                          toast.open();
+                        }
+                        break;
+                    }
+                  };
+                };
+              });
+          });
+        }
       }
     }
 
