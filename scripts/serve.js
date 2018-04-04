@@ -7,7 +7,7 @@ const app = express();
 
 const isLocal = process.argv.includes("--local");
 const basePath = isLocal ? "/../" : "/../build/default";
-const appRoot = require("./app-root");
+const { appRoot } = require("./app-root");
 
 app.use("/api", api);
 app.use(express.static(__dirname + basePath));

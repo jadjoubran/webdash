@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const getPlugins = require("./lib/get-plugins");
 
-const appRoot = require("./app-root");
+const { appRoot } = require("./app-root");
 
 const app = express();
 app.use(cors());

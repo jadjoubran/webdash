@@ -1,7 +1,6 @@
 const fs = require("fs");
 const FileHound = require("filehound");
-const appRoot = require("./../app-root");
-
+const { appRootNoGlobal } = require("./../app-root");
 
 const fileExists = file => {
   return fs.existsSync(`${appRoot}/${file}`);
@@ -31,50 +30,45 @@ if (fileExists("dist")) {
 
 try {
   const jsFiles = FileHound.create()
-  .ignoreHiddenDirectories()
-  .ignoreHiddenFiles()
-  .path(`${appRoot}/${dist}`)
-  .ext("js")
-  .depth(1)
-  .findSync();
+    .ignoreHiddenDirectories()
+    .ignoreHiddenFiles()
+    .path(`${appRoot}/${dist}`)
+    .ext("js")
+    .depth(1)
+    .findSync();
 
   if (jsFiles.length) {
     let path = jsFiles[0];
     path = path.replace(`${appRoot}/`, "");
-    jsBudgetPath =
-    "./" + path.substr(0, path.lastIndexOf("/")) + "/*.js";
+    jsBudgetPath = "./" + path.substr(0, path.lastIndexOf("/")) + "/*.js";
   }
-}catch (error){
-
-}
+} catch (error) {}
 
 try {
   const manifestFiles = FileHound.create()
-  .ignoreHiddenDirectories()
-  .ignoreHiddenFiles()
-  .path(appRoot)
-  .discard(/bower_components|node_modules/)
-  .match("manifest.json")
-  .depth(3)
-  .findSync();
-  if (manifestFiles.length) {
-    manifestPath = "./" + manifestFiles[0].replace(`${appRoot}/`, '');
-  } else {
-    const webManifestFiles = FileHound.create()
     .ignoreHiddenDirectories()
     .ignoreHiddenFiles()
     .path(appRoot)
     .discard(/bower_components|node_modules/)
-    .match("site.webmanifest")
+    .match("manifest.json")
     .depth(3)
     .findSync();
+  if (manifestFiles.length) {
+    manifestPath = "./" + manifestFiles[0].replace(`${appRoot}/`, "");
+  } else {
+    const webManifestFiles = FileHound.create()
+      .ignoreHiddenDirectories()
+      .ignoreHiddenFiles()
+      .path(appRoot)
+      .discard(/bower_components|node_modules/)
+      .match("site.webmanifest")
+      .depth(3)
+      .findSync();
     if (webManifestFiles.length) {
       manifestPath = "./" + webManifestFiles[0].replace(`${appRoot}/`, "");
     }
   }
-}catch (err){
-
-}
+} catch (err) {}
 
 module.exports = {
   src,
