@@ -48,6 +48,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "alexisab",
+      "name": "Alexis Ablain",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11648546?v=4",
+      "profile": "https://github.com/alexisab",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ]
 }
