@@ -40,7 +40,7 @@
     "test:integration": "polymer build",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "publish-next": "npm vesion prerelase && npm publish --tag next"
+    "publish-next": "npm version prerelase && npm publish --tag next"
   },
   "bin": {
     "webdash": "./scripts/index.js"
