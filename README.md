@@ -1,4 +1,6 @@
 # Webdash
+
+[![Join the chat at https://gitter.im/jadjoubran/webdash](https://badges.gitter.im/jadjoubran/webdash.svg)](https://gitter.im/jadjoubran/webdash?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
 Webdash is a web dashboard that helps you visualize, monitor & manage your web project using community-driven plugins
