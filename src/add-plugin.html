@@ -1,4 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="/bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+
 <dom-module id="add-plugin">
     <template>
         <style>
@@ -21,9 +24,29 @@
             svg {
                 margin-right: 10px;
             }
+
+            paper-dialog {
+                z-index: 10000;
+                position: fixed;
+                overflow-y: scroll;
+                max-width: 960px;
+                margin: 24px auto;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            #dialog-body {
+                text-align: left;
+            }
+
+            #dialog-body img {
+                max-width: 500px;
+            }
         </style>
 
-        <div id="add" on-click="openDocs">
+        <div id="add" on-click="viewPluginList">
             <svg width="14" height="15" viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Canvas0" transform="translate(-431 -1444)">
                     <use xlink:href="#path0_fill" transform="translate(430 1443.8)" fill="#FFF" id="plus" />
@@ -36,13 +59,36 @@
             Add Plugin
         </div>
 
+        <paper-dialog id="dialog" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+            <div class="buttons">
+                <paper-button dialog-confirm autofocus>Close</paper-button>
+            </div>
+            <paper-dialog-scrollable id="dialog-body">
+            </paper-dialog-scrollable>
+        </paper-dialog>
+
     </template>
+
+    <script src="/bower_components/showdown/dist/showdown.min.js"></script>
     <script>
         class AddPlugin extends Polymer.Element {
-            static get is() { return 'add-plugin'; }
+            static get is() {
+                return 'add-plugin';
+            }
 
-            openDocs() {
-                window.open('https://github.com/jadjoubran/webdash/wiki/List-of-Verified-Webdash-plugins', '_blank');
+            viewPluginList() {
+                const converter = new showdown.Converter();
+                fetch(
+                    'https://raw.githubusercontent.com/wiki/jadjoubran/webdash/List-of-Verified-Webdash-plugins.md'
+                ).then(res => {
+                    return res.text();
+                }).then(markdown => {
+                    return converter.makeHtml(markdown);
+                }).then(html => {
+                    this.$["dialog-body"].innerHTML = html;
+                    this.$.dialog.fitInto = this.$.plugin;
+                    this.$.dialog.open();
+                });
             }
         }
 
