@@ -106,7 +106,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.appPath = data.appPath;
             this.version = data.version;
             if (window.gtag) {
-              gtag('event', 'version', { 'value': this.version });
+              gtag('event', 'version', {
+                event_label: this.version,
+              }, {
+                nonInteraction: true
+              });
             }
             window.dispatchEvent(new CustomEvent('webdash-info', {
               detail: data
