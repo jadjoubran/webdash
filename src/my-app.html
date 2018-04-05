@@ -55,7 +55,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         align-items: center;
         justify-content: space-between;
         position: relative;
-        z-index: 10000;/*must be higher than plugin-wrapper:hover*/
+        z-index: 10000;
+        /*must be higher than plugin-wrapper:hover*/
       }
     </style>
 
@@ -107,16 +108,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.appName = data.appName;
             this.appPath = data.appPath;
             this.version = data.version;
-            if (window.gtag) {
-              gtag('event', 'version', {
-                event_label: this.version,
-              }, {
-                nonInteraction: true
-              });
-            }
+
             window.dispatchEvent(new CustomEvent('webdash-info', {
               detail: data
-            }))
+            }));
+
+            setTimeout(() => {
+              if (window.gtag) {
+                gtag('event', 'version', {
+                  event_label: this.version,
+                });
+              }
+            }, 3000);
           });
       }
 
