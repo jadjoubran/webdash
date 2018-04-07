@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 const chalk = require("chalk");
-const opn = require("opn");
 require("./checks");
 
 const serveOptions = yargs => {
@@ -16,6 +15,7 @@ const serveOptions = yargs => {
 };
 
 const serveCommand = argv => {
+  const opn = require("opn");
   const app = require("./serve");
   const port = argv.port;
   const host = argv.host;
@@ -36,7 +36,12 @@ const serveCommand = argv => {
 };
 
 const configCommand = argv => {
-  require("./install");
+  const { writeConfig } = require("./lib/write-config");
+  const getConfig = require("./lib/config-helper");
+
+  const root = process.cwd();
+
+  writeConfig(root, getConfig(root));
 };
 
 require("yargs") // eslint-disable-line
