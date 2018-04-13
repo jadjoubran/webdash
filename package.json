@@ -29,16 +29,14 @@
     "workbox-cli": "^3.0.1"
   },
   "scripts": {
-    "dev": "concurrently \"polymer serve\" \"node ./scripts/index.js --local\"",
-    "start": "concurrently \"polymer serve build/default\" \"node ./scripts/index.js --local\"",
+    "dev": "./scripts/index.js --local",
     "postinstall": "node ./scripts/install.js",
     "prepublishOnly": "npx all-contributors check && polymer build && workbox generateSW",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
     "test:integration": "polymer build",
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate",
+    "contrib": "all-contributors",
     "publish-next": "npm version prerelease && npm publish --tag next"
   },
   "bin": {
