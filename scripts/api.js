@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const fetch = require("node-fetch");
+const MarkdownIt = require("markdown-it");
 const getPlugins = require("./lib/get-plugins");
 
 const { appRoot } = require("./app-root");
@@ -91,6 +93,20 @@ app.get("/webdash/plugins", (req, res) => {
   const plugins = getPlugins(packageJson);
 
   res.send({ plugins });
+});
+
+app.get("/webdash/plugins-html", (req, res) => {
+  const md = MarkdownIt({ html: true, linkify: true, typographer: true });
+
+  const listOfPlugins =
+    "https://raw.githubusercontent.com/wiki/jadjoubran/webdash/List-of-Verified-Webdash-plugins.md";
+
+  fetch(listOfPlugins)
+    .then(response => response.text())
+    .then(response => {
+      const html = md.render(response);
+      res.send({ html });
+    });
 });
 
 app.use(express.static(__dirname + "/build/es6-bundled"));

@@ -25,7 +25,7 @@
                 margin-right: 10px;
             }
 
-            paper-dialog {
+            #dialog {
                 z-index: 10000;
                 position: fixed;
                 overflow-y: scroll;
@@ -59,7 +59,7 @@
             Add Plugin
         </div>
 
-        <paper-dialog id="dialog" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+        <paper-dialog id="dialog">
             <div class="buttons">
                 <paper-button dialog-confirm autofocus>Close</paper-button>
             </div>
@@ -69,26 +69,27 @@
 
     </template>
 
-    <script src="/bower_components/showdown/dist/showdown.min.js"></script>
+
     <script>
         class AddPlugin extends Polymer.Element {
             static get is() {
                 return 'add-plugin';
             }
 
+            ready() {
+                super.ready();
+                this.backend = new Backend('webdash');
+            }
+
             viewPluginList() {
-                const converter = new showdown.Converter();
-                fetch(
-                    'https://raw.githubusercontent.com/wiki/jadjoubran/webdash/List-of-Verified-Webdash-plugins.md'
-                ).then(res => {
-                    return res.text();
-                }).then(markdown => {
-                    return converter.makeHtml(markdown);
-                }).then(html => {
-                    this.$["dialog-body"].innerHTML = html;
-                    this.$.dialog.fitInto = this.$.plugin;
-                    this.$.dialog.open();
-                });
+                this.backend.get('plugins-html')
+                    .then(response => {
+                        if (!response || !response.html) {
+                            return false;
+                        }
+                        this.$["dialog-body"].innerHTML = response.html;
+                        this.$.dialog.open();
+                    });
             }
         }
 

@@ -19,8 +19,7 @@
     "paper-ripple": "PolymerElements/paper-ripple#^2.1.0",
     "iron-icons": "PolymerElements/iron-icons#^2.1.1",
     "paper-dialog": "^2.1.1",
-    "paper-dialog-scrollable": "^2.2.0",
-    "showdown": "^1.8.6"
+    "paper-dialog-scrollable": "^2.2.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"
