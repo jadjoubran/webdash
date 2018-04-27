@@ -10,6 +10,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "filehound": "^1.16.2",
+    "hoek": "^5.0.3",
     "is-global": "^0.1.0",
     "lodash": "^4.17.0",
     "markdown-it": "^8.4.1",
