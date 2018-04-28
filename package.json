@@ -1,6 +1,6 @@
 {
   "name": "webdash",
-  "version": "1.4.0",
+  "version": "1.4.1-0",
   "license": "MIT",
   "dependencies": {
     "app-root-path": "^2.0.1",
@@ -34,8 +34,7 @@
   "scripts": {
     "dev": "./scripts/index.js --local",
     "postinstall": "node ./scripts/install.js",
-    "prepublishOnly":
-      "npx all-contributors check && polymer build && workbox injectManifest",
+    "prepublishOnly": "npx all-contributors check && polymer build && workbox injectManifest",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
