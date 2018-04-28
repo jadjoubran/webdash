@@ -34,7 +34,8 @@
   "scripts": {
     "dev": "./scripts/index.js --local",
     "postinstall": "node ./scripts/install.js",
-    "prepublishOnly": "npx all-contributors check && polymer build && workbox generateSW",
+    "prepublishOnly":
+      "npx all-contributors check && polymer build && workbox injectManifest",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
