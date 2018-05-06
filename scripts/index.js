@@ -11,6 +11,10 @@ const serveOptions = yargs => {
     .positional("host", {
       describe: "hostname",
       default: "localhost"
+    })
+    .positional("no-open", {
+      describe: "Prevent from automatically opening webdash in the browser",
+      default: false
     });
 };
 
@@ -28,7 +32,9 @@ const serveCommand = argv => {
     console.log(message);
 
     try {
-      opn(url);
+      if (!process.argv.includes("--no-open")) {
+        opn(url);
+      }
     } catch (error) {
       //couldn't serve webdash, no big deal: end-users can open it manually
     }
