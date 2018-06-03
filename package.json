@@ -1,6 +1,6 @@
 {
   "name": "webdash",
-  "version": "1.4.1-0",
+  "version": "1.4.1-1",
   "license": "MIT",
   "dependencies": {
     "app-root-path": "^2.0.1",
