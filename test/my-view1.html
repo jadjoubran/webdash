@@ -10,33 +10,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>my-view1</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../bower_components/web-component-tester/browser.js"></script>
+  <title>my-view1</title>
 
-    <!-- Import the element to test -->
-    <link rel="import" href="../src/my-view1.html">
-  </head>
-  <body>
-    <test-fixture id="BasicView">
-      <template>
-        <my-view1></my-view1>
-      </template>
-    </test-fixture>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
 
-    <script>
-      suite('my-view1 tests', function() {
-        test('Number in circle should be 1', function() {
-          var myView = fixture('BasicView');
-          var circle = myView.shadowRoot.querySelector('.circle');
-          assert.equal(circle.textContent, '1');
-        });
+  <!-- Import the element to test -->
+  <!-- <link rel="import" href="../src/my-view1.html"> -->
+</head>
+
+<body>
+  <test-fixture id="BasicView">
+    <template>
+      <my-view1></my-view1>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('my-view1 tests', function () {
+      test('Number in circle should be 1', function () {
+        var myView = fixture('BasicView');
+        var circle = myView.shadowRoot.querySelector('.circle');
+        assert.equal(circle.textContent, '1');
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
